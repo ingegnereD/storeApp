@@ -1,0 +1,690 @@
+    @import './baseStyle.scss';
+     ::-webkit-scrollbar {
+        width: 0;
+        height: .5rem;
+    }
+    
+    .filter-btn,
+    .filter-location {
+        background-color: $light-blue-color;
+        color: $white-color2;
+        position: relative;
+        overflow: visible;
+        .option {
+            z-index: 5;
+            @include area(auto, 100%);
+            min-width: 14rem;
+            position: absolute;
+            top: 2.4rem;
+            left: 0;
+            @include flex(column, flex-start, center);
+            border: 1px solid $light-blue-color;
+            border: 1px solid $text-color;
+            padding: .5rem;
+            background-color: $white-color1;
+            li {
+                @include area(2.4rem, 100%);
+                padding: 0 .5rem;
+                @include flex(row, flex-start, center);
+                background-color: $white-color1;
+                border-bottom: 1px solid $text-color;
+                cursor: pointer;
+                input {
+                    display: none;
+                }
+                &:hover {
+                    background-color: $white-color2;
+                }
+                &:nth-child(5) {
+                    height: auto;
+                    min-height: 2.4rem;
+                    max-height: 5.8rem;
+                    padding: .25rem 0;
+                    @include resGrid(8.5rem);
+                    gap: 1rem;
+                    input {
+                        height: 2rem;
+                        display: block;
+                    }
+                    &:hover {
+                        background-color: initial;
+                    }
+                }
+                &:last-child {
+                    border-bottom: none;
+                    @include flex(row, space-between, center);
+                    padding: .25rem 0;
+                    .unClear {
+                        @include area(2rem, fit-content);
+                        padding: 0 .75rem;
+                        @include font(1rem, $font-mont, $white-color1);
+                        @include flex(row, center, center);
+                        gap: .5rem;
+                        border-radius: $border-radius1;
+                        .icon {
+                            @include area(100%, fit-content);
+                            @include flex(row, center, center);
+                        }
+                    }
+                    &:hover {
+                        background-color: initial;
+                    }
+                }
+            }
+        }
+    }
+    
+    .filter-location {
+        .option {
+            li {
+                &:last-child {
+                    padding: 0 .5rem;
+                }
+            }
+        }
+    }
+    
+    .container {
+        $nav-height: 4rem;
+        @include area(auto, 100vw);
+        min-height: 100vh;
+        background-color: $white-color2;
+        position: relative;
+        @include towCol($nav-height, fit-content);
+        nav {
+            background-color: $white-color;
+            @include area($nav-height, 100%);
+            @include towCol(15rem, calc(100% - 15rem));
+            padding: 0 .5rem;
+            .aside-nav {
+                @include area(inherit, 100%);
+                @include flex(row, flex-start, center);
+                h2 {
+                    // font-weight: 900;
+                    span {
+                        color: cornflowerblue;
+                    }
+                }
+                .icon {
+                    display: none;
+                }
+            }
+            position: relative;
+            overflow: visible;
+            .header-nav {
+                @include area(inherit, 100%);
+                @include towCol(14rem, auto);
+                position: relative;
+                overflow: visible;
+                .left {
+                    @include area(inherit, 100%);
+                    @include flex(row, flex-start, center);
+                    button {
+                        height: 2.3rem;
+                        background-color: $white-color2;
+                        color: $text-color;
+                    }
+                    position: relative;
+                    overflow: visible;
+                }
+                .right {
+                    @include area(inherit, 100%);
+                    // background-color:;
+                    @include flex(row, flex-end, center);
+                    gap: 2rem;
+                    button {
+                        background-color: $white-color2;
+                        p {
+                            position: absolute;
+                            top: 4rem;
+                            width: fit-content;
+                            padding: .2rem 1.8rem;
+                            background-color: $light-blue-color;
+                            color: $white-color2;
+                            transform: translateZ(10rem);
+                            border-radius: .2rem;
+                            z-index: 20;
+                        }
+                    }
+                    .date-info {
+                        @include flex(row, center, center);
+                        gap: .5rem;
+                    }
+                    .lighting {
+                        @include area(100%, 4rem);
+                        @include flex(row, center, center);
+                        #light-icon {
+                            @include area(1.5rem, 1.75rem);
+                            @include flex(row, center, center);
+                            border-top-left-radius: .2rem;
+                            border-bottom-left-radius: .2rem;
+                            font-size: 1.3rem;
+                        }
+                        #dark-icon {
+                            @include area(1.5rem, 1.75rem);
+                            @include flex(row, center, center);
+                            border-top-right-radius: .2rem;
+                            border-bottom-right-radius: .2rem;
+                        }
+                        .light-mode {
+                            background-color: black;
+                            color: $light-blue-color;
+                        }
+                        .dark-mode {
+                            color: black;
+                            background-color: $white-color2;
+                        }
+                        cursor: pointer;
+                    }
+                    .admin {
+                        @include area(inherit, fit-content);
+                        padding: .5rem 0;
+                        @include flex(column, space-between, center);
+                        small {
+                            color: $light-blue-color;
+                        }
+                    }
+                }
+            }
+        }
+        // -------------------------END OF NAV--------------------------------
+        header {
+            @include area(fit-content, 100%);
+            @include towCol(15rem, calc(100% - 15rem));
+            background-color: $white-color;
+        }
+        .aside {
+            background-color: $white-color;
+            @include area(fit-content, 15rem);
+            min-height: calc(100vh - 4rem);
+            display: flex;
+            flex-direction: column;
+            gap: .25rem;
+            li {
+                @include area(fit-content, 100%);
+                display: grid;
+                grid-template-rows: 2.75rem fit-content;
+                .top-list {
+                    height: 2.5rem;
+                    @include flex(row, flex-start, center);
+                    gap: 1rem;
+                    padding: 0 .5rem;
+                    cursor: pointer;
+                    transition: $transition1;
+                    &:hover {
+                        background-color: $white-color2;
+                    }
+                }
+                .active-link {
+                    background-color: $white-color2;
+                }
+                .drop-list {
+                    @include area(auto, 100%);
+                    @include flex(row, flex-end, center);
+                    .aside-drop {
+                        @include area(auto, 85%);
+                        li {
+                            height: 2.3rem;
+                            background-color: white;
+                            @include flex(row, flex-start, center);
+                            gap: .75rem;
+                            padding: 0 .5rem;
+                            cursor: pointer;
+                            transition: $transition1;
+                            &:hover {
+                                background-color: $white-color2;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        // -----------------------------------------FOR TABLE--------------------------------------
+        .action-btn {
+            @include area(auto, auto);
+            position: relative;
+            overflow: visible;
+            ul {
+                z-index: 5;
+                position: absolute;
+                @include area(auto, 10rem);
+                top: 2.1rem;
+                left: 0;
+                border: 1px solid $text-color;
+                padding: .5rem;
+                background-color: $white-color1;
+                li {
+                    @include area(2.3rem, 100%);
+                    background-color: $white-color1;
+                    padding: 0 .5rem;
+                    border-bottom: 1px solid $text-color;
+                    @include font(1rem, $font-mont, $text-color);
+                    @include flex(row, flex-start, center);
+                    transition: $transition1;
+                    &:last-child {
+                        border-bottom: none;
+                    }
+                    &:hover {
+                        background-color: $white-color2;
+                        &:last-child {
+                            background-color: $danger-color;
+                            color: $white-color1;
+                        }
+                    }
+                }
+            }
+        }
+        .dash-bottom-info {
+            padding: .25rem;
+            @include area(28rem, 100%);
+            background-color: $white-color;
+            border-radius: $border-radius1;
+            @include towRow(3rem, auto);
+            @media screen and (max-width: 800px) {
+                height: 32rem;
+            }
+            .table-holder {
+                @include area(100%, 100%);
+                overflow-y: auto;
+                @include flex(row, center, flex-start);
+                table {
+                    background-color: $white-color2;
+                    @include area(auto, 100%);
+                    border-collapse: separate;
+                    table-layout: fixed;
+                    thead {
+                        tr {
+                            height: 2.5rem;
+                            background-color: $white-color;
+                            th {
+                                @include font(1.1rem, $font-pop, $text-color);
+                                font-weight: 500;
+                            }
+                        }
+                    }
+                    tbody {
+                        tr {
+                            height: 2.3rem;
+                            td {
+                                background-color: $white-color;
+                                @include font(1rem, $font-mont, $text-color);
+                                text-align: center;
+                            }
+                            &:nth-child(odd) {
+                                td {
+                                    background-color: $white-color1;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        // ----------------------------------FORM GROUP----------------------------------------------------
+        input {
+            @include area(2.3rem, 100%);
+            @include font(1rem, $font-mont, $text-color);
+            padding: 0 .5rem;
+            background-color: white;
+            border: 1px solid black;
+            border-radius: .2rem;
+            &:focus {
+                outline-color: $light-blue-color;
+            }
+        }
+        .input-form-gp {
+            @include area(5rem, 100%);
+            display: flex;
+            flex-direction: column;
+            gap: .2rem;
+            label {
+                height: 2.3rem;
+            }
+        }
+        .click-text-group {
+            @include area(auto, 100%);
+            @include flex;
+            position: relative;
+            overflow: visible;
+            button {
+                position: relative;
+                overflow: visible;
+                @include area(2.3rem, 100%);
+                background-color: $light-blue-color;
+                color: $white-color1;
+                @include webkitscroll(.25rem, .25rem, $white-color2, $text-color);
+                .drop-option {
+                    border-radius: $border-radius1;
+                    position: absolute;
+                    top: 2.4rem;
+                    left: 0;
+                    z-index: 5;
+                    @include area(auto, 100%);
+                    min-width: 14rem;
+                    max-height: 13.5rem;
+                    background-color: $white-color1;
+                    border: 1px solid $text-color;
+                    padding: .5rem;
+                    @include towRow(calc(11.5rem - 2.4rem), 2.4rem);
+                    gap: .5rem;
+                    ul {
+                        li {
+                            @include area(2.3rem, 100%);
+                            border-bottom: 1px solid $text-color;
+                            @include flex(row, flex-start, center);
+                            padding: 0 .5rem;
+                        }
+                    }
+                    .search-area {
+                        @include area;
+                        @include flex(row, center, center);
+                        gap: 1rem;
+                        button {
+                            @include area(2rem, fit-content);
+                            .small-icon {
+                                color: $white-color1;
+                            }
+                        }
+                        .no-lab-form-group {
+                            @include area(2rem, 75%);
+                            @include flex;
+                            input {
+                                height: 2rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .click-input-gp {
+            @include area(2.5rem, 100%);
+            @include flex;
+            overflow: visible;
+            position: relative;
+            button {
+                @include area(2.3rem, 100%);
+                background-color: $light-blue-color;
+                color: $white-color1;
+                overflow: visible;
+                position: relative;
+                ul {
+                    position: absolute;
+                    top: 2.4rem;
+                    left: 0;
+                    z-index: 5;
+                    @include area(auto, 100%);
+                    min-width: 14rem;
+                    background-color: $white-color1;
+                    border: 1px solid $text-color;
+                    padding: .5rem;
+                    border-radius: $border-radius1;
+                    li {
+                        @include area(2.3rem, 100%);
+                        border-bottom: 1px solid $text-color;
+                        @include flex(row, flex-start, center);
+                        padding: 0 .5rem;
+                        input {
+                            display: none;
+                        }
+                        label {
+                            @include font(1rem, $font-mont, $text-color);
+                        }
+                        &:last-child {
+                            height: 2.5rem;
+                            padding: 0;
+                            border-bottom: none;
+                        }
+                        transition: $transition1;
+                        &:hover {
+                            background: $white-color2;
+                        }
+                    }
+                }
+            }
+        }
+        // ----------------------------------FOR LOCATION COPONENT------------------------------------------
+        .location-cont {
+            @include area(2.5rem, 15rem);
+            overflow: hidden;
+            @include flex;
+            background-color: gold;
+            button {
+                @include area(2.5rem, 15rem);
+                background-color: $light-blue-color;
+                color: $white-color1;
+            }
+            ul.location-option {
+                border: 1px solid $light-blue-color;
+                @include area(fit-content, auto);
+                position: absolute;
+                top: 7.5rem;
+                right: .4rem;
+                background-color: red;
+                li {
+                    @include area(2.5rem, 15rem);
+                    @include flex(row, center, center);
+                    border-bottom: 1px solid $white-color2;
+                    input {
+                        display: none;
+                    }
+                    label {
+                        background-color: $white-color;
+                        &:nth-child(odd) {
+                            background-color: $white-color1;
+                        }
+                        @include flex(row, flex-start, center);
+                        padding: 0 .5rem;
+                        @include area;
+                        cursor: pointer;
+                        transition: $transition1;
+                        &:hover {
+                            background-color: $light-blue-color;
+                            h4 {
+                                color: $white-color1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        // -------------------------------------FOR NOTIFICATION-----------------------------------
+        .notification {
+            z-index: 50;
+            @include area(auto, fit-content);
+            min-height: 2.5rem;
+            padding: 0 1rem;
+            background-color: $white-color;
+            @include flex(row, center, center);
+            justify-self: center;
+            position: absolute;
+            top: -30rem;
+            h4 {
+                font-weight: 600;
+            }
+        }
+        .active-notif {
+            top: -30rem;
+            border-radius: $border-radius1;
+            animation: showNot 700ms linear forwards;
+            @keyframes showNot {
+                to {
+                    top: 3rem;
+                }
+            }
+        }
+        .in-active-notif {
+            top: 3rem;
+            border-radius: $border-radius1;
+            animation: hideNot 1400ms linear forwards;
+            @keyframes hideNot {
+                to {
+                    top: -30rem;
+                }
+            }
+        }
+        // *******************************
+        // --------------------------------------END OF NAV-------------------------------------------------
+        // -------------------------------------Media queries-----------------------------------------------
+        // media queries
+        // smaller pcs width of 992 - 1200px
+        @media screen and (max-width: 1500px) {
+            nav {
+                .header-nav {
+                    @include towCol(12rem, auto);
+                    .right {
+                        gap: 1.5rem;
+                    }
+                }
+            }
+        }
+        // smaller pcs width of 1200px - 1400px
+        @media screen and (max-width: 1400px) {
+            // removing POS ND LIST from NAV
+            nav {
+                .header-nav {
+                    @include towCol(auto, auto);
+                    gap: 1.5rem;
+                    .right {
+                        .profit {
+                            transition: $transition1;
+                            display: none;
+                        }
+                        .lighting {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+        // smaller pcs width of 992 - 1200px
+        @media screen and (max-width: 1200px) {
+            nav {
+                @include towCol(13rem, calc(100% - 13rem));
+                .header-nav {
+                    .right {
+                        .calc {
+                            display: none;
+                        }
+                    }
+                }
+            }
+            header {
+                @include area(fit-content, 100%);
+                @include towCol(13rem, calc(100% - 13rem));
+                .aside {
+                    width: 13rem;
+                }
+            }
+        }
+        // tablets from 768 - 991px 
+        @media screen and (max-width: 991px) {
+            nav {
+                @include towCol(4rem, calc(100% - 4rem));
+                .aside-nav {
+                    h2 {
+                        display: none;
+                    }
+                }
+                .header-nav {
+                    @include flex(row, center, center);
+                    .left {
+                        display: none;
+                    }
+                    .right {
+                        width: 100%;
+                        gap: 1.25rem;
+                        .calc {
+                            display: block;
+                            @include flex;
+                        }
+                        .date-info {
+                            span {
+                                // display: none;
+                            }
+                        }
+                    }
+                }
+            }
+            header {
+                @include area(fit-content, 100%);
+                @include towCol(4rem, calc(100% - 4rem));
+                .aside {
+                    width: 4rem;
+                    li {
+                        .top-list {
+                            h4 {
+                                position: absolute;
+                                left: 2.5rem;
+                                // display: none;
+                            }
+                            .icon {
+                                font-size: 1.35rem;
+                            }
+                        }
+                        overflow-x: visible;
+                        .drop-list {
+                            @include area(auto, 14rem);
+                            z-index: 10;
+                        }
+                    }
+                }
+            }
+        }
+        // mobile from x-768
+        @media screen and (max-width: 768px) {
+            nav {
+                height: 3rem;
+                @include towCol(2.5rem, calc(100% - 2.5rem));
+                .aside-nav {
+                    .icon {
+                        display: block;
+                        @include flex(row, flex-start, center);
+                        font-size: 1.5rem;
+                        color: $light-blue-color;
+                    }
+                }
+                .header-nav {
+                    .right {
+                        .admin,
+                        .date-info,
+                        .home {
+                            display: none;
+                        }
+                    }
+                }
+            }
+            header {
+                @include area(fit-content, 100%);
+                min-height: 100vh;
+                display: flex;
+                .aside {
+                    z-index: 10;
+                    width: 13rem;
+                    position: absolute;
+                    li {
+                        .top-list {}
+                    }
+                }
+            }
+            .menu-active {
+                position: absolute;
+                left: -50rem;
+                animation: showMenu 700ms linear forwards;
+            }
+            @keyframes showMenu {
+                to {
+                    left: 0rem;
+                }
+            }
+            .menu-exit {
+                position: absolute;
+                left: 0;
+                animation: exitMenu 700ms linear forwards;
+            }
+            @keyframes exitMenu {
+                to {
+                    left: -50rem;
+                }
+            }
+        }
+    }

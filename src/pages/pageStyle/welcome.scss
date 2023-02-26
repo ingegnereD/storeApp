@@ -1,0 +1,312 @@
+@import '../../baseStyle.scss';
+.welcome {
+    @include area(auto, 100vw);
+    min-height: 100vh;
+    @include towRow(4rem, auto);
+    @media screen and (max-width: 920px) {
+        @include towRow(3rem, auto);
+    }
+    @media screen and (max-width: 768px) {
+        @include towRow(2.75rem, auto);
+    }
+    gap: 1rem;
+    .nav {
+        @include area(100%, 80%);
+        @media screen and (max-width: 500px) {
+            width: 95%;
+        }
+        z-index: 3;
+        display: flex;
+        justify-self: center;
+        justify-content: space-between;
+        align-items: flex-end;
+        .left {
+            h1 {
+                color: $white-color1;
+                font-size: 2rem;
+                @media screen and (max-width: 920px) {
+                    font-size: 1.7rem;
+                }
+                @media screen and (max-width: 768px) {
+                    font-size: 1.5rem;
+                }
+            }
+        }
+        .right {
+            @include area(inherit, 5rem);
+            @include flex(row, flex-end, center);
+            button {
+                z-index: 2;
+                width: 100%;
+                background-color: $white-color1;
+                @media screen and (max-width: 768px) {
+                    height: 2rem;
+                }
+            }
+        }
+        border-bottom: 1px solid $white-color2;
+    }
+    .main {
+        @include area(fit-content, 100%);
+        min-height: calc(100vh - 5rem);
+        // gap: 1rem;
+        display: flex;
+        justify-self: center;
+        flex-direction: column;
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            @include area(42vh, 100%);
+            background-color: $light-blue-color;
+            display: flex;
+            justify-self: center;
+            border-bottom-right-radius: 6rem;
+        }
+        .top {
+            z-index: 2;
+            overflow: visible;
+            @media screen and (max-width: 500px) {
+                width: 95%;
+            }
+            width: 80%;
+            margin: 0 auto;
+            height: calc(40vh - 4.1rem);
+            @include resGrid(21.5rem);
+            @media screen and (max-width: 460px) {
+                @include resGrid(18.5rem);
+            }
+            gap: 2rem;
+            &::after,
+            &::before {
+                z-index: 1;
+                content: "";
+                position: absolute;
+                top: 7.3rem;
+                right: 0;
+                @include area(25rem, 50%);
+                border-bottom-right-radius: 3 rem;
+                background-color: $light-blue-color;
+                // background-color: $warning-color;
+                display: flex;
+                justify-self: flex-end;
+                -webkit-transform: skewY(-17deg);
+            }
+            .left {
+                z-index: 2;
+                @include area;
+                @include flex(column, flex-start, flex-start);
+                padding-top: 3rem;
+                h2 {
+                    margin-bottom: 1rem;
+                    color: $white-color1;
+                }
+                p {
+                    line-height: 1.5rem;
+                    color: $white-color1;
+                }
+            }
+            .right {
+                z-index: 2;
+                overflow: visible;
+                @include area;
+                position: relative;
+                .access-card-cont {
+                    // z-index: 17;
+                    box-shadow: $white-bg-box-shadow;
+                    position: absolute;
+                    top: 3rem;
+                    right: 0rem;
+                    border-radius: $border-radius3;
+                    @include area(auto, 80%);
+                    @media screen and (max-width: 1250px) {
+                        width: 100%;
+                    }
+                    @media screen and (max-width: 850px) {
+                        width: 80vw;
+                    }
+                    @media screen and (max-width: 460px) {
+                        width: 100%;
+                    }
+                    padding: .5rem .75rem;
+                    background-color: $white-color;
+                    display: grid;
+                    grid-template-rows: 2rem,
+                    auto,
+                    2rem;
+                    gap: 1rem;
+                    @media screen and (max-width: 920px) {
+                        // top: -30rem;
+                    }
+                    .heading {
+                        h2,
+                        h3 {
+                            // color: $light-blue-color;
+                        }
+                    }
+                    // position: relative;
+                    overflow: visible;
+                    form {
+                        z-index: 3;
+                        @include area;
+                        @include towRow(auto, 2.5rem);
+                        gap: 1rem;
+                        position: relative;
+                        overflow: visible;
+                        .page {
+                            @include flex(column, center, flex-start);
+                            position: relative;
+                            overflow: visible;
+                            gap: .5rem;
+                            .input-sec {
+                                @include area(4.5rem, 100%);
+                                @include towRow(1.5rem, 2.5rem);
+                                gap: .5rem;
+                                label {
+                                    @include flex(row, flex-start, flex-end);
+                                    @include font(1rem, $font-mont, $text-color);
+                                    font-weight: 500;
+                                }
+                            }
+                            .location {
+                                width: 100%;
+                                margin-top: .5rem;
+                                position: relative;
+                                overflow: visible;
+                            }
+                        }
+                        .action {
+                            @include flex(row, space-between, center);
+                            button {
+                                @include area(2rem, fit-content);
+                                padding: 0 .75rem;
+                                color: $white-color1
+                            }
+                        }
+                    }
+                    .next-p {
+                        @include area(auton, 100%);
+                        @include flex(column, space-between, center);
+                        gap: .5rem;
+                        p {
+                            height: 1.2rem;
+                        }
+                    }
+                }
+                .active {
+                    top: -50rem;
+                    animation: show 600ms linear forwards;
+                    @keyframes show {
+                        100% {
+                            top: 3rem;
+                        }
+                    }
+                }
+                .in-active {
+                    top: 3rem;
+                    animation: hide 500ms linear forwards;
+                    @keyframes hide {
+                        100% {
+                            top: -50rem;
+                        }
+                    }
+                }
+                @media screen and (max-width: 900px) {
+                    .active {
+                        top: -50rem;
+                        animation: show 600ms linear forwards;
+                        @keyframes show {
+                            100% {
+                                top: -12rem;
+                            }
+                        }
+                    }
+                    .in-active {
+                        top: -12rem;
+                        animation: hide 500ms linear forwards;
+                        @keyframes hide {
+                            100% {
+                                top: -50rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .bottom {
+            @include area(calc(100vh - 40vh - 1rem), 100%);
+            @media screen and (max-width: 920px) {
+                @include area(calc(100vh - 40vh), 100%);
+            }
+            @media screen and (max-width: 768px) {
+                @include area(calc(100vh - 39.3vh), 100%);
+            }
+            @include flex(row, center, center);
+            margin: 0 auto;
+            overflow: hidden;
+            @media screen and (max-width: 921px) {
+                // margin-top: 3.1rem;
+            }
+            background-color: $light-blue-color;
+            .left {
+                @include area(100%, 50%);
+                margin: .25rem;
+                margin-top: 0;
+                background-color: pink;
+                padding: .5rem;
+                border-top-right-radius: 5rem;
+                border-top-left-radius: 5rem;
+                @include flex(row, flex-start, flex-end);
+                h4 {
+                    max-width: 20rem;
+                    color: $light-blue-color;
+                }
+            }
+            .right {
+                background-color: $white-color1;
+                width: 50%;
+                height: 100%;
+                &::after,
+                &::before {
+                    content: " ";
+                    @include area(75%, 100%);
+                    background-color: $light-blue-color;
+                    position: absolute;
+                    bottom: 0;
+                    border-top-left-radius: 20%;
+                    border-bottom-right-radius: 5rem;
+                }
+            }
+            position: relative;
+            &::after {
+                content: "Bringing you closer to perfection";
+                @include flex(row, center, flex-end);
+                @include font(1rem, $font-mont, $white-color1);
+                @include area(10.75rem, 50vw);
+                position: absolute;
+                bottom: 4rem;
+                right: 0;
+                background-color: $light-blue-color;
+                transform: skewY(-17deg);
+                display: none;
+                @media screen and (max-width: 840px) {
+                    bottom: 4rem;
+                }
+                @media screen and (max-width: 780px) {
+                    height: 11.3rem;
+                    bottom: 3.5rem;
+                }
+                @media screen and (max-width: 710px) {
+                    height: 12.5rem;
+                    bottom: 2rem;
+                }
+                @media screen and (max-width: 475px) {
+                    height: 13rem;
+                    bottom: 2rem;
+                }
+            }
+        }
+    }
+}

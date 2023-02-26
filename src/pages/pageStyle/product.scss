@@ -1,0 +1,290 @@
+@import '../../baseStyle.scss';
+.product-page {
+    padding-top: .5rem;
+    @include area(auto, 100%);
+    // min-height: calc(100vh - 6rem);
+    min-height: 85vh;
+    @include towRow(auto, auto);
+    // gap: .5rem;
+    background-color: $white-color2;
+    .top {
+        padding: 0 .5rem;
+        @include area(fit-content, 100%);
+        min-height: 2.5rem;
+        @include resGrid(18rem);
+        gap: 1rem;
+        @media screen and (max-width: 591px) {
+            gap: 0rem;
+        }
+        .left {
+            @include flex(row, flex-start, flex-start);
+            @include area(2.5rem, 100%);
+        }
+        .right {
+            @include flex(row, flex-end, center);
+            @include area(2.5rem, 100%);
+            @media screen and (max-width: 591px) {
+                @include flex(row, flex-start, center);
+            }
+            .location {
+                @include area(2.3rem, 15rem);
+                background-color: $light-blue-color;
+            }
+        }
+    }
+    main {
+        @include area(fit-content, 100%);
+        @include resGrid(35rem);
+        gap: .5rem;
+        padding: .5rem;
+        @media screen and (max-width: 630px) {
+            @include resGrid(25rem);
+        }
+        @media screen and (max-width: 420px) {
+            @include resGrid(20rem);
+        }
+        @media screen and (max-width: 350px) {
+            @include resGrid(17rem);
+        }
+        form {
+            @include area(auto, 100%);
+            min-height: 10rem;
+            max-height: 82vh;
+            background-color: $white-color;
+            padding: .25rem;
+            box-shadow: $white-bg-box-shadow;
+            border-radius: $border-radius1;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            .top-form {
+                @include resGrid(30rem);
+                gap: 1rem;
+                @media screen and (max-width: 1594px) {
+                    @include resGrid(20rem);
+                }
+                @media screen and (max-width: 1256px) {
+                    @include resGrid(15rem);
+                }
+                @media screen and (max-width: 1048px) {
+                    @include resGrid(13rem);
+                }
+                @media screen and (max-width: 680px) {
+                    @include resGrid(21rem);
+                }
+                @media screen and (max-width: 380px) {
+                    @include resGrid(15rem);
+                }
+            }
+            .action {
+                @include area(fit-content, 100%);
+                @include resGrid(20rem);
+                gap: 2rem;
+                @media screen and (max-width: 1624px) {
+                    @include resGrid(15rem);
+                }
+                @media screen and (max-width: 1304px) {
+                    @include resGrid(12rem);
+                }
+                @media screen and (max-width: 1096px) {
+                    @include resGrid(10rem);
+                }
+                @media screen and (max-width: 830px) {
+                    @include resGrid(8rem);
+                    gap: 1rem;
+                }
+                @media screen and (max-width: 584px) {
+                    @include resGrid(12rem);
+                }
+                @media screen and (max-width: 440px) {
+                    @include resGrid(9rem);
+                }
+                @media screen and (max-width:340px) {
+                    @include resGrid(7rem);
+                }
+                .event {
+                    @include area(2.5rem, 100%);
+                }
+                .clear {
+                    border: 1px solid $text-color;
+                    transition: $transition1;
+                    &:hover {
+                        color: $white-color1;
+                        background-color: $danger-color;
+                    }
+                }
+                .add {
+                    border: 1px solid $text-color;
+                    transition: $transition1;
+                    &:hover {
+                        background-color: $success-color;
+                        color: $white-color1;
+                    }
+                }
+                .click-text-group {
+                    @include area(2.5rem, 100%);
+                    button {
+                        .search-area {
+                            @include flex(row, center, center);
+                            gap: .5rem;
+                            .clear {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .listed-product {
+            background-color: $white-color;
+            @include area(auto, 100%);
+            min-height: 82vh;
+            max-height: 82vh;
+            padding: .25rem;
+            box-shadow: $white-bg-box-shadow;
+            border-radius: $border-radius1;
+            .add-product {
+                height: 100%;
+                max-height: 82vh;
+                .table-holder {
+                    height: 100%;
+                    height: calc(100vh - 4rem - 5rem);
+                    max-height: 82vh;
+                    overflow: auto;
+                    @include flex(row, flex-start, flex-start);
+                    table {
+                        thead {
+                            tr {
+                                th {
+                                    width: 8rem;
+                                    &:nth-child(2) {
+                                        width: 10rem;
+                                    }
+                                    &:nth-child(2) {
+                                        width: 10rem;
+                                    }
+                                    &:nth-child(5),
+                                    &:nth-child(4),
+                                    &:nth-child(3) {
+                                        width: 6rem;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// -----------------------------FOR LISTED PRODUCT---------------------------------
+.product-page {
+    @include area(auto, 100%);
+    min-height: 100vh;
+    // @include towRow(fit-content, auto);
+    display: grid;
+    grid-template-rows: auto;
+    @include flex(column, flex-start, center);
+    gap: .5rem;
+    .filter {
+        @include area(auto, 100%);
+        min-height: 3.5rem;
+        padding: 0 .5rem;
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+        .second {
+            padding: 0 .5rem;
+            border-radius: $border-radius1;
+            cursor: pointer;
+            @include area(2.5rem, 100%);
+            @include flex(row, space-between, center);
+            .icon {
+                color: $light-blue-color;
+            }
+        }
+        .active-second {
+            &:hover {
+                background-color: $light-blue-color;
+                h3 {
+                    color: $white-color1;
+                }
+                .icon {
+                    color: $white-color1;
+                }
+            }
+        }
+        .first {
+            min-height: 6rem;
+            @include resGrid(20rem);
+            gap: 1rem;
+            @media screen and (max-width: 672px) {
+                @include resGrid(14rem);
+            }
+            @media screen and (max-width: 480px) {
+                @include resGrid(12rem);
+            }
+            // button {
+            //     background-color: $white-color;
+            //     color: $text-color;
+            //     box-shadow: $white-bg-box-shadow;
+            // }
+            .date-filter {
+                border: $border-radius1;
+                @include flex(row, center, center);
+                gap: .5rem;
+                height: 2.3rem;
+            }
+            .location {
+                height: 2.3rem;
+            }
+            @media screen and (max-width: 768px) {
+                // display: none;
+            }
+        }
+    }
+    .products {
+        @include area(calc(100vh - 7vh - 8.5vh), 100%);
+        padding: 0 .5rem;
+        padding-bottom: .5rem;
+        .dash-bottom-info {
+            height: 100%;
+            .table-holder {
+                height: calc(100vh - 7vh - 8.5vh);
+                border-bottom-left-radius: $border-radius1;
+                border-bottom-right-radius: $border-radius1;
+                @include flex(row, flex-start, flex-start);
+                overflow: auto;
+                table {
+                    thead {
+                        tr {
+                            th {
+                                width: 9rem;
+                                &:nth-child(6),
+                                &:nth-child(5) {
+                                    width: 7rem;
+                                }
+                            }
+                        }
+                    }
+                    tbody {
+                        tr {
+                            td {
+                                &:first-child {
+                                    @include flex(row, center, center);
+                                    height: 2.3rem;
+                                    button {
+                                        width: 7rem;
+                                        background-color: $light-blue-color;
+                                        color: $white-color1;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

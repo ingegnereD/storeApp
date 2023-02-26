@@ -1,0 +1,295 @@
+@import '../../baseStyle.scss';
+.sale-page {
+    background-color: $white-color1;
+    padding-top: .5rem;
+    @include area(auto, 100%);
+    min-height: calc(100vh - 4rem);
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    main {
+        @include area(calc(100vh - 5.5rem - 2.5rem), 100%);
+        @include flex(row, center, flex-start);
+        // padding: .5rem .5rem;
+        gap: .5rem;
+    }
+    .left {
+        background-color: $white-color;
+        @include area(100%, 60%);
+        padding: .5rem;
+        display: grid;
+        grid-template-rows: 3rem auto;
+        gap: .5rem;
+        @media screen and (max-width: 1250px) {
+            width: 65%;
+        }
+        @media screen and (max-width: 1030px) {
+            width: 80%;
+        }
+        @media screen and (max-width: 830px) {
+            width: 100%;
+        }
+        .top {
+            padding-top: .2rem;
+            @include area(100%, 100%);
+            @include towCol(15rem, calc(100% - 16rem));
+            gap: 1rem;
+            @media screen and (max-width: 630px) {
+                @include towCol(5rem, calc(100% - 6rem));
+            }
+            @media screen and (max-width: 420px) {
+                @include towCol(3.5rem, calc(100% - 4.5rem));
+            }
+            .click-text-group {
+                @include area(2.5rem, 100%);
+                button {
+                    .search-area {
+                        gap: .5rem;
+                        .clear {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+        .sale-list {
+            @include area(calc(100vh - 3rem - 4rem - 6rem), 100%);
+            @include towRow(auto, 3rem);
+            gap: .5rem;
+            .dash-bottom-info {
+                height: 100%;
+                padding-bottom: .5rem;
+                @include webkitscroll(.5rem, .5rem, $white-color2, $text-color);
+                .table-holder {
+                    height: calc(100vh - 7vh - 8.5vh);
+                    height: 80vh;
+                    border-bottom-left-radius: $border-radius1;
+                    border-bottom-right-radius: $border-radius1;
+                    @include flex(row, flex-start, flex-start);
+                    overflow: auto;
+                    table {
+                        thead {
+                            tr {
+                                th {
+                                    width: 8rem;
+                                    &:first-child {
+                                        width: 4rem;
+                                        @media screen and (max-width: 1220px) {
+                                            width: 3rem;
+                                        }
+                                    }
+                                    &:nth-child(3) {
+                                        @media screen and (max-width: 1415px) {
+                                            display: none;
+                                        }
+                                        @media screen and (max-width: 1250px) {
+                                            height: inherit;
+                                            display: block;
+                                            display: grid;
+                                            place-items: center;
+                                        }
+                                        @media screen and (max-width: 1070px) {
+                                            display: none;
+                                        }
+                                    }
+                                    &:nth-child(2) {
+                                        width: 12rem;
+                                        @media screen and (max-width: 1220px) {
+                                            width: 10rem;
+                                        }
+                                    }
+                                    &:nth-child(4) {
+                                        width: 10rem;
+                                    }
+                                    &:last-child {
+                                        @media screen and (max-width: 1490px) {
+                                            width: 4rem;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        tbody {
+                            tr {
+                                td {
+                                    &:nth-child(3) {
+                                        @media screen and (max-width: 1415px) {
+                                            display: none;
+                                        }
+                                        @media screen and (max-width: 1250px) {
+                                            display: block;
+                                            height: inherit;
+                                            display: grid;
+                                            place-items: center;
+                                        }
+                                        @media screen and (max-width: 1070px) {
+                                            display: none;
+                                        }
+                                    }
+                                    &:nth-child(4) {
+                                        @include webkitscroll(0, 0, red, red);
+                                        .qty-add-sub {
+                                            @include area;
+                                            @include flex(row, center, center);
+                                            .no-lab-form-group {
+                                                @include area(2rem, auto);
+                                                @include flex(row, center, center);
+                                                input {
+                                                    @include area(2rem, 4rem);
+                                                    border-radius: 0;
+                                                    border-color: $white-color2;
+                                                    padding-left: 1rem;
+                                                    &:focus {
+                                                        padding-left: .5rem;
+                                                    }
+                                                }
+                                            }
+                                            button {
+                                                @include area(2rem, 2.5rem);
+                                                border: 1px solid $white-color2;
+                                                color: $text-color;
+                                                background-color: $white-color2;
+                                                transition: $transition1;
+                                            }
+                                            .add-qty {
+                                                &:hover {
+                                                    background-color: $success-color;
+                                                    color: $white-color1;
+                                                }
+                                            }
+                                            .sub-qty {
+                                                &:hover {
+                                                    background-color: $warning-color;
+                                                    color: $white-color1;
+                                                }
+                                            }
+                                        }
+                                    }
+                                    &:last-child {
+                                        height: initial;
+                                        .icon {
+                                            display: none;
+                                        }
+                                        button {
+                                            @include area(2rem, 6rem);
+                                            margin: 0 auto;
+                                            background-color: $light-blue-color;
+                                            color: $white-color1;
+                                            transition: $transition1;
+                                            &:hover {
+                                                background-color: $danger-color;
+                                            }
+                                        }
+                                        @media screen and (max-width: 1490px) {
+                                            button {
+                                                display: none;
+                                            }
+                                            .icon {
+                                                display: block;
+                                                margin: auto auto;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .sale-info {
+                @include area(fit-content, 100%);
+                padding: 0 .5rem;
+                background-color: $white-color;
+                border: 1px solid $text-color;
+                // max-height: 6rem;
+                @include flex(row, flex-start, center);
+                @include resGrid(11rem);
+                gap: 1rem;
+                .items {
+                    height: 2.5rem;
+                    @include flex(row, flex-start, center);
+                }
+                .amt {
+                    @include area(2.5rem, 100%);
+                    @include flex(row, flex-start, center);
+                    h4 {
+                        @include flex(row, center, center);
+                    }
+                }
+                // display: none;
+            }
+        }
+    }
+    .right {
+        @include area(100%, 40%);
+        padding: .2rem .5rem;
+        @include resGrid(10rem);
+        gap: 1rem;
+        background-color: $white-color1;
+        @media screen and (max-width: 1250px) {
+            width: 35%;
+        }
+        @media screen and (max-width: 1030px) {
+            width: 27.5%;
+        }
+        @media screen and (max-width: 830px) {
+            width: 20%;
+            display: none;
+        }
+        .product-card {
+            background-color: $white-color;
+            box-shadow: $white-bg-box-shadow;
+            padding: .5rem;
+            border-radius: $border-radius1;
+            @include area(7rem, 100%);
+            @include towRow(auto, auto);
+            gap: .5rem;
+            .product-name {
+                @include flex(row, flex-start, center);
+            }
+            .product-info {
+                @include towCol(auto, auto);
+                gap: .5rem;
+                .detail {
+                    @include flex(row, flex-start, center);
+                    h4 {
+                        @include flex(row, flex-start, center);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.foot {
+    @include area(auto, 100%);
+    // min-height: 2.5rem;
+    @include flex(row, center, center);
+    background-color: cyan;
+    .left {
+        padding: .5rem .5rem;
+        padding-top: 0;
+        @include area(auto, 100%);
+        min-height: 2rem;
+        @include resGrid(14.5rem);
+        gap: 1rem;
+        button,
+        .btn {
+            height: 2.5rem;
+            width: 100%;
+            color: $white-color1;
+        }
+        .amount {
+            @include area(2.5rem, 100%);
+            color: $text-color;
+            background-color: $white-color2;
+            @include flex(row, center, center);
+        }
+    }
+}
+
+// -----------------------ALL SALES-----------------
+.all-sales {
+    @include area(auto, 100%);
+    background-color: coral;
+}

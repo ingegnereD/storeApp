@@ -1,0 +1,304 @@
+@import '../../baseStyle.scss';
+.dash-header {
+    @include area(fit-content, 100%);
+    min-height: 100vh;
+    background-color: $white-color2;
+    // padding: .5rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    // display: none;
+    .top {
+        padding: .5rem 0rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        position: relative;
+        overflow: visible;
+        .top-dash-info {
+            padding: 0rem .5rem;
+            height: auto;
+            min-height: 4rem;
+            @include resGrid(27rem);
+            position: relative;
+            overflow: visible;
+            .left {
+                height: auto;
+                min-height: 4rem;
+                @include flex(row, flex-start, center);
+            }
+            .right {
+                height: auto;
+                width: 100%;
+                min-height: 4rem;
+                @include flex(row, space-between, center);
+                @include resGrid(13rem);
+                gap: .75rem;
+                position: relative;
+                overflow: visible;
+                button {
+                    @include area(2.3rem, 100%);
+                    background-color: $light-blue-color;
+                    color: $white-color2;
+                    position: relative;
+                    overflow: visible;
+                }
+            }
+            @media screen and (max-width: 500px) {
+                @include resGrid(18rem)
+            }
+            @media screen and (max-width: 390px) {
+                @include resGrid(13rem)
+            }
+        }
+        .bottom-dash-info {
+            padding: .5rem .5rem;
+            @include resGrid(15rem);
+            place-items: center;
+            gap: .75rem;
+            .dash-info-box {
+                box-shadow: $white-bg-box-shadow;
+                border-radius: $border-radius1;
+                @include area(5rem, 100%);
+                background-color: $white-color;
+                @include towCol(4rem, calc(100% - 4rem));
+                place-items: center;
+                gap: .5rem;
+                .big-icon {
+                    align-items: flex-start;
+                    padding-top: .75rem;
+                    font-size: 2.5rem;
+                }
+                .info {
+                    @include area(100%, 100%);
+                    @include towRow(auto, auto);
+                    h4 {
+                        margin-top: .5rem;
+                    }
+                    .detail {
+                        @include flex(row, flex-start, center);
+                    }
+                }
+                @media screen and (max-width: 700px) {
+                    gap: .3rem;
+                    .big-icon {
+                        font-size: 2.3rem
+                    }
+                }
+                @media screen and (max-width: 511px) {
+                    gap: 4rem;
+                }
+            }
+        }
+    }
+    .bottom {
+        @include area;
+        padding: .5rem .5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        .item-highlight {
+            @include area(100%, 100%);
+            padding-top: .25rem;
+            border-radius: $border-radius1;
+            width: fit-content;
+            @include flex(row, center, center);
+        }
+        .recent-sale {
+            width: 100%;
+            .table-holder {
+                height: 100%;
+                overflow: auto;
+                @include flex(row, flex-start, flex-start);
+                table {
+                    thead {
+                        tr {
+                            th {
+                                width: 8rem;
+                            }
+                        }
+                    }
+                    tbody {
+                        tr {
+                            td {
+                                &:first-child {
+                                    @include flex(row, center, center);
+                                    height: inherit;
+                                    button {
+                                        @include area(2rem, 6rem);
+                                        background-color: $light-blue-color;
+                                        color: $white-color2;
+                                        transition: $transition1;
+                                        &:hover {
+                                            background-color: $text-color;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .order-info {
+                position: absolute;
+                background-color: $white-color2;
+                @include area(100vh, 100vw);
+                // z-index: 20;
+                left: 0;
+                top: 0;
+                display: grid;
+                place-items: center;
+                .fly-page {
+                    @include area(90vh, 85%);
+                    background-color: $white-color;
+                    @include towRow(2.5rem, auto);
+                    gap: 1rem;
+                    .nav {
+                        background-color: chartreuse;
+                    }
+                    .header {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-between;
+                        gap: 1rem;
+                        .invoice-top {
+                            @include area(auto, 100%);
+                            min-height: 8rem;
+                            background-color: pink;
+                        }
+                        .invoice-mid {
+                            @include area(auto, 100%);
+                            min-height: 20rem;
+                            @include flex(row, center, flex-start);
+                            .table-holder {
+                                background-color: $white-color;
+                                width: 99%;
+                            }
+                        }
+                        .invoice-foot {
+                            background-color: brown;
+                            @include area(auto, 100%);
+                            min-height: 2.5rem;
+                        }
+                    }
+                }
+            }
+        }
+        .cont {
+            @include area(auto, 100%);
+            @include resGrid(20rem);
+            gap: 1rem;
+        }
+        .top-sale {
+            width: 100%;
+            .table-holder {
+                height: 100%;
+                overflow: auto;
+                @include flex(row, flex-start, flex-start);
+                table {
+                    thead {
+                        tr {
+                            th {
+                                width: 8rem;
+                                &:first-child {
+                                    width: 10rem;
+                                }
+                            }
+                        }
+                    }
+                    tbody {
+                        tr {
+                            td {
+                                &:nth-child(2) {
+                                    height: 2.5rem;
+                                    @include flex(row, center, center);
+                                    gap: .5rem;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .recent-purchase {
+            width: 100%;
+            .table-holder {
+                height: 100%;
+                overflow: auto;
+                @include flex(row, flex-start, flex-start);
+                table {
+                    thead {
+                        .parent-tr {
+                            th {
+                                width: 30%;
+                            }
+                            @media screen and (max-width: 581px) {
+                                th {
+                                    width: 8rem;
+                                    &:nth-child(2) {
+                                        width: 12rem;
+                                    }
+                                    &:last-child {
+                                        width: 6rem;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    tbody {
+                        .parent-tr {
+                            cursor: pointer;
+                            td.parent-td {
+                                &:nth-child(3) {
+                                    height: 2.5rem;
+                                    @include flex(row, center, center);
+                                    gap: .5rem;
+                                }
+                            }
+                            position: relative;
+                            .purchase-info {
+                                background-color: $white-color;
+                                padding-top: 2rem;
+                                position: absolute;
+                                left: 0;
+                                top: 2.5rem;
+                                z-index: 10;
+                                table {
+                                    background-color: $light-blue-color;
+                                }
+                            }
+                            transition: $transition1;
+                        }
+                        .active-tr {
+                            td.parent-td {
+                                background-color: $light-blue-color;
+                                color: $white-color;
+                                font-weight: 600;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .finish-product {
+            width: 100%;
+            .table-holder {
+                height: 100%;
+                overflow: auto;
+                @include flex(row, flex-start, flex-start);
+                table {
+                    thead {
+                        tr {
+                            th {
+                                width: 8rem;
+                                &:first-child {
+                                    width: 10rem;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
