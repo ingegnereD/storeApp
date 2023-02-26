@@ -2,12 +2,36 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { AiFillCaretDown, AiFillCaretUp } from 'react-icons/ai'
 import { BsFillFilterSquareFill } from 'react-icons/bs'
+import { useNavigate } from 'react-router-dom'
 import { availLocations } from '../dataArray'
 
-const LocationFilter = ({def, last, userInfo, setUserInfo}) => {
+const LocationFilter = ({def, userInfo, setUserInfo}) => {
     const [showBizLoc, setShowBizLoc] = useState(false)
-    const [location, setLocation] = useState(def.deft)
-    const [lastList, setLastList]= useState(true)
+    const [location, setLocation] = useState('')
+    const navigate = useNavigate()
+
+    useEffect(()=>{
+        let userInfo;
+        let account;
+        if (localStorage.getItem('userInfo') === null || localStorage.getItem('account') === null) {
+            return navigate('/')   
+        }
+        if (localStorage.getItem('userInfo') !== null && localStorage.getItem('account') !== null) {
+            userInfo = JSON.parse(localStorage.getItem('userInfo'))
+            account = JSON.parse(localStorage.getItem('account'))
+            let ind = userInfo.index
+            if (ind === -1) {
+                return navigate('/')
+            }
+            let fetchedLocation = account.at(ind).profile.location
+            if (typeof(fetchedLocation) === 'undefined') {
+                setLocation('Select Location')
+            }
+            else if (typeof(fetchedLocation) !== 'undefined') {
+                setLocation(fetchedLocation)
+            }
+        }
+    },[])
     
     function handleShowBizLoc() {
         if (showBizLoc) {

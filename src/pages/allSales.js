@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom'
 const ActionBox = ()=>{
     const [dropDown,  setDropDown] = useState(false)
 
+
     function handleEdit() {
         if (dropDown) {
         setDropDown(false)
@@ -45,6 +46,8 @@ const AllSales = () => {
     const [menu, setMenu] = useState(false)
     const [size, setSize] = useState(window.innerWidth)
     const [filterObj, setFilterObj] = useState(false)
+    const [def, setDef] = useState({deft: 'All Location', state: true})
+
     const navigate = useNavigate()
     
     const changeSize = ()=>{
@@ -97,7 +100,7 @@ const AllSales = () => {
                             </span>
                         </div>
                         {filterObj && <div className="first" style={{position: 'relative', overflow: 'visible'}}>
-                            <LocationFilter />
+                            <LocationFilter def={def} setDef={setDef} />
                             <DateFilter />
                             <ClickTextInput title={'customer'} />
                             <ClickTextInput title={'seller'} />

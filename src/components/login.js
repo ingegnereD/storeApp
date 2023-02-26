@@ -94,7 +94,7 @@ const Login = ({notif, setNotif, access, setAccess, cardClass, setCardClass, siz
                 }
             }
             else if (localStorage.getItem('account') === null) {
-                setNotif({note: 'User not found !!!', textclass: 'danger-color', stat: true})
+                setNotif({note: 'User does not exit...', textclass: 'danger-color', stat: true})
                 setTimeout(()=>{
                     setCredentials({...credentials, pass: '', userName: ''})
                     setNotif({note:'', textclass: '', stat:false})

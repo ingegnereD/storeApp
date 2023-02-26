@@ -12,12 +12,39 @@ import {BsMenuButtonWideFill} from 'react-icons/bs'
 import LocationFilter from './locationFilter'
 import { useNavigate } from 'react-router-dom'
 
-const Nav = ({menu, setMenu, seller}) => {
+const Nav = ({menu, setMenu}) => {
     const [navBtn, setNavBtn] = useState({calc: false, pos: false, profit: false, home: false, list: false})
     const [theme, setTheme] = useState(true)   
-    const [fetchedLoc, setFetchedLoc]= useState('')
-    const [def, setDef] = useState({deft: seller.location, state: true})
+    const [fetched, setFetched]= useState({seller: '', location: ''})
+    const [def, setDef] = useState({deft: '', state: true})
     const navigate = useNavigate()
+
+    useEffect(()=>{
+        let userInfo;
+        let account;
+        if (localStorage.getItem('userInfo') === null || localStorage.getItem('account') === null) {
+            return navigate('/')   
+        }
+        if (localStorage.getItem('userInfo') !== null && localStorage.getItem('account') !== null) {
+            userInfo = JSON.parse(localStorage.getItem('userInfo'))
+            account = JSON.parse(localStorage.getItem('account'))
+            let ind = userInfo.index
+            if (ind === -1) {
+                return navigate('/')
+            }
+            let fetchedLocation = account.at(ind).profile.location
+            let firstname = account.at(ind).profile.firstName
+            setFetched({...fetched, seller: firstname})
+            if (typeof(fetchedLocation) === 'undefined') {
+                setFetched({...fetched,seller: firstname , location: 'Ile-Ife, Osun state'})
+                setDef({...def, deft: 'Ile-Ife, Osun state', state: true})
+            }
+            else if (typeof(fetchedLocation) !== 'undefined') {
+                setFetched({...fetched,seller: firstname, location: fetchedLocation})
+                setDef({...def, deft: fetchedLocation, state: true})
+            }
+        }
+    },[])
 
     function handleTheme() {
         if (theme) {
@@ -105,7 +132,7 @@ const Nav = ({menu, setMenu, seller}) => {
                         <span id='dark-icon' className={theme? "dark-mode" : "light-mode"}><BsFillMoonFill /></span>
                     </article>
                     <article className="admin">
-                        <h4>{seller.sellername}</h4>
+                        <h4>{fetched.seller}</h4>
                         <small>cashier</small>
                     </article>
                 </article>
