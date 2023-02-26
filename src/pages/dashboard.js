@@ -37,6 +37,7 @@ const Dashboard = ({access, setAccess}) => {
       account = JSON.parse(localStorage.getItem('account'))
       let ind = userInfo.index
       if (ind === -1) {
+        console.log('returning...')
         return navigate('/')
       }
       let firstname = account.at(ind).profile.firstName
