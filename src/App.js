@@ -15,22 +15,14 @@ import RecoverAct from './pages/recoverAct'
 const App = () => {
   const [access, setAccess] = useState(false)
 
-  useEffect(()=>{
-    if (!access) {
-      let account;
-      let userInfo;
-      if (localStorage.getItem('userInfo') === null) {
-        // redirect Navigate('/')
-      }
-      }
-  },[access])
+  
 
   return (
     <section className="container">
       <BrowserRouter>
         <Routes>
-          <Route index element={<LoginPage setAccess={setAccess} />}/>
-          <Route path='login' element ={<LoginPage setAccess={setAccess}/>}/>
+          <Route index element={<LoginPage access={access} setAccess={setAccess} />}/>
+          <Route path='login' element ={<LoginPage access = {access} setAccess={setAccess}/>}/>
           <Route path='signup' element ={<WelcomePage access={access} setAccess={setAccess}/>}/>
           <Route path='dashboard' element ={<Dashboard access={access} setAccess={setAccess}/>}/>
           <Route path='newproduct' element ={<AddNewProduct access={access} setAccess={setAccess}/>}/>

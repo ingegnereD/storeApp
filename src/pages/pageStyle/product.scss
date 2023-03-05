@@ -225,11 +225,6 @@
             @media screen and (max-width: 480px) {
                 @include resGrid(12rem);
             }
-            // button {
-            //     background-color: $white-color;
-            //     color: $text-color;
-            //     box-shadow: $white-bg-box-shadow;
-            // }
             .date-filter {
                 border: $border-radius1;
                 @include flex(row, center, center);
@@ -239,8 +234,17 @@
             .location {
                 height: 2.3rem;
             }
-            @media screen and (max-width: 768px) {
-                // display: none;
+            @media screen and (max-width: 768px) {}
+            .click-input-gp {
+                button {
+                    ul {
+                        li {
+                            &:last-child {
+                                padding: 0 .5rem;
+                            }
+                        }
+                    }
+                }
             }
         }
     }

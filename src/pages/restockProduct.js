@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'    
+import { compareAsc, format } from 'date-fns'
 import Aside from '../components/aside'
 import Nav from '../components/nav'
 import { newProduct } from '../dataArray'
@@ -11,7 +12,11 @@ import LocationFilter from '../components/locationFilter'
 import { useNavigate } from 'react-router-dom'
 
 const RestockProduct = () => {
+    const [presentDate, setPresentDate] = useState({date: format(new Date(), 'dd/MM/yyyy'), time: format(new Date(), 'HH:mm')})
     const [menu, setMenu] = useState(false)
+    const [def, setDef] = useState({deft: 'All Location', state: true})
+    const [clickInput, setClickInput] = useState('')
+    const [drop, setDrop] = useState(false)
     const navigate = useNavigate()
     
     useEffect(()=>{
@@ -26,6 +31,10 @@ const RestockProduct = () => {
             return navigate('/')
         }
     }})
+    function handleSubmit(e) {
+        e.preventDefault()
+        console.log('restocking new product');
+    }
 
     return (
         <>
@@ -39,7 +48,7 @@ const RestockProduct = () => {
                         </article>
                         <article className="right" style={{overflow: 'visible', position: 'relative'}}>
                             {/* this only cones up when that on nav disappears.... */}
-                            <LocationFilter /> 
+                            <LocationFilter def={def} setDef={setDef}/> 
                             
                         </article>
                     </section>
@@ -56,7 +65,7 @@ const RestockProduct = () => {
                                 <button className="unClear clear event" type='button'>
                                     Clear Field
                                 </button>
-                                <button className="unClear add event" type='button'>
+                                <button className="unClear add event" type='submit' onSubmit={handleSubmit}>
                                     Add Product
                                 </button>
                             </section>

@@ -1,16 +1,18 @@
 import React from 'react'
+import { compareAsc, format } from 'date-fns'
 import { useState, useEffect } from 'react'
 import { AiFillCaretDown, AiFillCaretUp } from 'react-icons/ai'
 import { BsFillFilterSquareFill } from 'react-icons/bs'
 import { MdClose } from 'react-icons/md'
 
 const DateFilter = ({notif, setNotif}) => {
+    const [dayvalue, setDayvalue] = useState({day: format(new Date(), 'dd'), month: format(new Date(), 'MM'), year: format(new Date(), 'yyyy')})
+    const [useDate, setUseDate] = useState('')
     const [filteredDate, setFilteredDate] = useState('Today')
     const [dateFilter, setDateFilter] = useState(false)
     const [storeDate, setStoreDate] = useState('')
     const [filterCaret, setFilterCaret] = useState(false)
     const [presentDay, setPresentDay] = useState('')
-
 
 
     function handleDateFilter() {
@@ -22,35 +24,41 @@ const DateFilter = ({notif, setNotif}) => {
         }
     }
     function handleDateChange(e) {
+        let input = e.target.value
+        let d = new Date(input)
+        console.log('-------------',format(new Date(input), 'dd/MM/yyyy'))
         setStoreDate(e.target.value.replace(/-/g,'/'))
     }
     
     function handleSetDay(e) {
         let id = e.target.id
-        // setStoreDate('Today')
         if (id === 'today') {
-            // console.log('today\'s date is ', presentDay);
             setStoreDate('Today')
+            setUseDate(Number(dayvalue.day))
         }
         if (id === 'yesterday') {
-            // console.log('today\'s date is ', presentDay - 1);
             setStoreDate('Yesterday')
+            setUseDate(Number(dayvalue.day) - 1)
         }
         if (id === 'seven-days') {
-            let ind = 7
             setStoreDate('Last 7 days')
-            if (presentDay > 7 ) {
-                for (let index = 1; index <= 7 ; index++) {
-                    // console.log('days', presentDay - index);
+            let ind = Number(dayvalue.day)
+            if (ind - 7 > 0) {
+                for (let index = 1; index < 7  ; index++) {
+                    console.log(index)
                 }
             }
-            else if (presentDay <= 7) {
-                
-            }
+
         }
         // setStoreDate('Last 7 days')
         if (id === 'one-month') {
             setStoreDate('Last 30 days')
+            let ind = Number(dayvalue.day)
+            if (ind - 30 > 0) {
+                for (let index = 1; index < 30  ; index++) {
+                    console.log(index)
+                }
+            }
         }
     }
 

@@ -3,7 +3,7 @@ import { BsFillFilterSquareFill } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom'
 import Aside from '../components/aside'
 import DateFilter from '../components/dateFilter'
-import { ClickInput, ClickTextInput, NoLabTextInput } from '../components/inputComponent'
+import { ClickInput, ClickTextInput, CustClickTextInput, NoLabTextInput, SellerClickInput } from '../components/inputComponent'
 import LocationFilter from '../components/locationFilter'
 import Nav from '../components/nav'
 import { newProduct } from '../dataArray'
@@ -12,6 +12,9 @@ const ListProduct = () => {
     const [menu, setMenu] = useState(false)
     const [size, setSize] = useState(window.innerWidth)
     const [filterObj, setFilterObj] = useState(false)
+    const [def, setDef] = useState({deft: 'All Location', state: true})
+    const [clickInput, setClickInput] = useState('')
+    const [drop, setDrop] = useState(true)
     const navigate = useNavigate()
     
     const changeSize = ()=>{
@@ -63,12 +66,12 @@ const ListProduct = () => {
                         </span>
                     </div>
                     {filterObj && <div className="first" style={{overflow: 'visible', position: 'relative'}}>
-                        <LocationFilter />
+                        <LocationFilter def={def} setDef={setDef}/>
                         <DateFilter />
-                        <ClickTextInput title={'customer'} />
-                        <ClickTextInput title={'seller'} />
-                        <NoLabTextInput inputtype={'text'} fieldname={'filterProdutct'} placeholder={'Find product by name or brand'} fieldinfo={'product-input-filter'} />
-                        <ClickInput desc={'brand'} />
+                        <CustClickTextInput title={'Customer'} />
+                        <SellerClickInput desc={'Seller'} />
+                        <NoLabTextInput inputtype={'text'} fieldname={'filterProdutct'} placeholder={'Find product by name or brand'} fieldinfo={'product-input-filter'} clickInput={clickInput} setClickInput={setClickInput} drop={drop} setDrop={setDrop} />
+                        <ClickTextInput title={'Brand'} />
                     </div>}
                 </article>
                 <article className="products">

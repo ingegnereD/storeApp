@@ -3,7 +3,7 @@ import Aside from '../components/aside'
 import Nav from '../components/nav'
 import { BsFillFilterSquareFill } from 'react-icons/bs'
 import DateFilter from '../components/dateFilter'
-import { ClickInput, ClickTextInput, NoLabTextInput } from '../components/inputComponent'
+import { ClickInput, ClickTextInput, CustClickTextInput, NoLabTextInput, SellerClickInput } from '../components/inputComponent'
 import LocationFilter from '../components/locationFilter'
 import { newProduct, recentSales } from '../dataArray'
 import { AiFillCaretDown, AiFillCaretUp } from 'react-icons/ai'
@@ -47,6 +47,8 @@ const AllSales = () => {
     const [size, setSize] = useState(window.innerWidth)
     const [filterObj, setFilterObj] = useState(false)
     const [def, setDef] = useState({deft: 'All Location', state: true})
+    const [clickInput, setClickInput] =  useState('')
+    const [drop, setDrop] = useState(false)
 
     const navigate = useNavigate()
     
@@ -102,10 +104,10 @@ const AllSales = () => {
                         {filterObj && <div className="first" style={{position: 'relative', overflow: 'visible'}}>
                             <LocationFilter def={def} setDef={setDef} />
                             <DateFilter />
-                            <ClickTextInput title={'customer'} />
-                            <ClickTextInput title={'seller'} />
-                            <NoLabTextInput inputtype={'text'} fieldname={'filterProdutct'} placeholder={'Find product by name or brand'} fieldinfo={'product-input-filter'} />
-                            <ClickInput desc={'brand'} />
+                            <CustClickTextInput title={'Customer'} />
+                            <SellerClickInput desc={'Seller'} />
+                            <NoLabTextInput inputtype={'text'} fieldname={'filterProdutct'} placeholder={'Find product by name or brand'} fieldinfo={'product-input-filter'} clickInput={clickInput} setClickInput={setClickInput} drop={drop} setDrop={setDrop}/>
+                            <ClickTextInput title={'Brand'} />
                         </div>}
                     </article>
                     <article className="products">

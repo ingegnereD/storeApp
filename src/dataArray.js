@@ -179,7 +179,9 @@ export const newProduct = [
 
 
 export const brandName = ['Golden Penny', 'Honey Well', 'Multipro', 'Baking Mat.', 'Salt']
-
+export const custList = ['Adegoke', 'Emmanuel', 'David', 'Adetunji', 'Gboye bakery', 'Samuel','Joseph']
+export const sellers = ['David', 'Onyedika','Christopher', 'Glory']
+export const unit = ['bag(s)', 'keg(s)', 'ctn(s)', 'pcs']
 
 export const tempSaleList = [
     {product: 'Semovita 500 g', unitprice: '6,250', qty: '15 bags', totamount: '82,200'},
