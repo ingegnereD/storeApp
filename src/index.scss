@@ -332,6 +332,40 @@
                 outline-color: $light-blue-color;
             }
         }
+        .drop-option {
+            @include area(auto, 100%);
+            @include webkitscroll(.25rem, .25rem, $white-color2, $text-color);
+            border-radius: $border-radius1;
+            position: absolute;
+            top: 2.4rem;
+            left: 0;
+            z-index: 5;
+            min-width: 14rem;
+            max-height: 15rem;
+            background-color: $white-color;
+            border: 1px solid $text-color;
+            padding: .25rem;
+            gap: .5rem;
+            ul {
+                li {
+                    @include area(2.3rem, 100%);
+                    border-bottom: 1px solid $text-color;
+                    @include flex(row, flex-start, center);
+                    padding: 0 .5rem;
+                    &:last-child {
+                        border-bottom: none;
+                    }
+                    transition: $transition1;
+                    &:hover {
+                        cursor: pointer;
+                        background-color: $white-color2;
+                    }
+                    &:nth-child(odd) {
+                        background-color: $white-color1;
+                    }
+                }
+            }
+        }
         .input-form-gp {
             @include area(5rem, 100%);
             display: flex;
@@ -340,42 +374,18 @@
             label {
                 height: 2.3rem;
             }
+            overflow: visible;
+            position: relative;
+            .drop-option {
+                @include webkitscroll(.5rem, .5rem, $white-color1, $text-color);
+                max-height: 60vh;
+                top: 5rem;
+            }
         }
         .only-input {
             @include area(auto, 100%);
             position: relative;
             overflow: visible;
-            .drop-option {
-                @include area(auto, 100%);
-                @include webkitscroll(.25rem, .25rem, $white-color2, $text-color);
-                border-radius: $border-radius1;
-                position: absolute;
-                top: 2.4rem;
-                left: 0;
-                z-index: 5;
-                min-width: 14rem;
-                max-height: 15rem;
-                background-color: $white-color1;
-                border: 1px solid $text-color;
-                padding: .5rem 0;
-                gap: .5rem;
-                ul {
-                    li {
-                        @include area(2.3rem, 100%);
-                        border-bottom: 1px solid $text-color;
-                        @include flex(row, flex-start, center);
-                        padding: 0 .5rem;
-                        &:last-child {
-                            border-bottom: none;
-                        }
-                        transition: $transition1;
-                        &:hover {
-                            cursor: pointer;
-                            background-color: $white-color2;
-                        }
-                    }
-                }
-            }
         }
         .click-text-group {
             @include area(auto, 100%);
@@ -535,9 +545,11 @@
             justify-self: center;
             position: absolute;
             top: -30rem;
+            left: 40%;
             h4 {
                 font-weight: 600;
             }
+            border: 1px solid $light-blue-color;
         }
         .active-notif {
             top: -30rem;
@@ -545,12 +557,12 @@
             animation: showNot 700ms linear forwards;
             @keyframes showNot {
                 to {
-                    top: 3rem;
+                    top: 4rem;
                 }
             }
         }
         .in-active-notif {
-            top: 3rem;
+            top: 4rem;
             border-radius: $border-radius1;
             animation: hideNot 1400ms linear forwards;
             @keyframes hideNot {

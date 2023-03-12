@@ -56,7 +56,8 @@ const SignUp = ({notif, setNotif, cardClass, setCardClass, size}) => {
                 setNotif({note: 'Password Should be more than 7 characters', textclass: 'danger-color', stat: true})
                 setTimeout(()=>{
                         setNotif({note:'', textclass: '', stat:false})
-                },3000)}
+                },3000)
+            }
 
             if(userInfo.userName.length < 5){
                 setNotif({note: 'UserName Should be more than 4 characters', textclass: 'danger-color', stat: true})

@@ -2,13 +2,45 @@ import React, { useEffect, useRef, useState } from 'react'
 import { AiFillCaretDown, AiFillCaretUp } from 'react-icons/ai';
 import { GrAdd } from 'react-icons/gr';
 import { MdAdd, MdClear, MdOutlinePeopleAlt } from 'react-icons/md';
-import { brandName, custList, purchaseInfo, sellers, stockAlert, unit } from '../dataArray';
+import { brandName, custList, newProduct, purchaseInfo, sellers, stockAlert, unit } from '../dataArray';
 
-export const TextInput = ({fieldname, inputtype, fieldinfo, placeholder}) => {
+export const TextInput = ({fieldname, inputtype, fieldinfo, placeholder, drop, setDrop, clickInput, setClickInput, holder,  setNotif}) => {
+    const [tempList, setTempList]= useState([])
 
-
-    function handleChange(){
-
+    function handleChange(e){
+        e.preventDefault();
+        let name = e.target.name
+        let value =  e.target.value
+        setClickInput({...clickInput, [name]: value})
+        switch (name) {
+            case 'product':
+                if (value === '' || value === ' ') {
+                    setDrop(false)
+                    
+                }else{
+                    const filtered = holder.filter((data)=> data.product.toLowerCase().includes(value.toLowerCase()) )
+                    setTempList(filtered)
+                    setDrop(true)
+                    if (filtered.length === 0) {
+                        setDrop(false)
+                        setNotif({note: 'Check Entered Product and Try again !!!', textclass: 'danger-color', stat: true})
+                        setTimeout(()=>{
+                            setClickInput({product: '', quantity: '', unitprice: '', brand: '', unit: ''})
+                            setNotif({note:'', textclass: '', stat:false})
+                        },3000)
+    
+                    }
+                }
+            
+            
+                break;
+        
+            default:
+                break;
+        }
+    }
+    function handleClick(ind, data) {
+        
     }
     return (
         <section className = {`${fieldname} form-group input-form-gp`} >
@@ -18,7 +50,22 @@ export const TextInput = ({fieldname, inputtype, fieldinfo, placeholder}) => {
             id = {fieldname}
             placeholder = {placeholder}
             onChange = { handleChange }
+            value={clickInput[fieldname]}
+            autoComplete = "off"
+            
             /> 
+            
+            {drop && <article className="drop-option">
+                <ul className="fetched-list">
+                    {tempList.map((data, ind)=>{
+                        return(
+                            <li key={ind} onClick={()=>handleClick(ind, data)}><h4>{data.product}</h4></li>
+                        )
+                    })}
+
+                </ul>
+            </article>}
+            
         </section>
     )
 }
@@ -63,7 +110,7 @@ export const NoLabTextInput = ({fieldname, inputtype, placeholder, clickInput, s
     )
 }
 
-export const ClickInput = ({desc})=>{
+export const ClickInput = ({desc, clickInput, setClickInput})=>{
     const [drop, setDrop] = useState(false)
     const [holder, setHolder] = useState(desc)
     
@@ -80,6 +127,8 @@ export const ClickInput = ({desc})=>{
     }
     function handleClick(ind, data) {
         setHolder(data)
+        setClickInput({...clickInput, unit: data})
+
     }
     return (
         <article className="form-group click-input-gp" onBlur={hideDrop} style={{height: '2.5rem'}}>
@@ -221,7 +270,6 @@ export const ClickTextInput =({icon, hideText, title})=>{
     const [holder, setHolder] = useState(title)
     const [cass, setCass] = useState(brandName)
 
-   
     function handleShowList(){
         if(showList){
             setShowList(false)
@@ -240,7 +288,8 @@ export const ClickTextInput =({icon, hideText, title})=>{
             setShowList(true)
         }
     }
-    function handleAdd() {
+    function handleAdd(e) {
+        e.preventDefault()
         if (clickInput !== " " && clickInput.length > 2) {
             setHolder(clickInput)
             setCass([...cass, clickInput])
@@ -248,7 +297,8 @@ export const ClickTextInput =({icon, hideText, title})=>{
         }
         setClickInput('')
     }
-    function handleRemove() {
+    function handleRemove(e) {
+        e.preventDefault()
         if (!clickInput) {
             setShowList(false)
         }
@@ -257,7 +307,7 @@ export const ClickTextInput =({icon, hideText, title})=>{
         }
     }
     return(
-        <section className="click-text-group" style={{height: '2.5rem'}}>
+        <section className="click-text-group" style={{height: '2.3rem'}}>
             <button className="unClear" type='button' onClick={handleShowList} >
                 <span className="icon mid-icon">{icon}</span> {holder}
             </button>

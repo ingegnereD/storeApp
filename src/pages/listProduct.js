@@ -14,7 +14,7 @@ const ListProduct = () => {
     const [filterObj, setFilterObj] = useState(false)
     const [def, setDef] = useState({deft: 'All Location', state: true})
     const [clickInput, setClickInput] = useState('')
-    const [drop, setDrop] = useState(true)
+    const [drop, setDrop] = useState(false)
     const navigate = useNavigate()
     
     const changeSize = ()=>{

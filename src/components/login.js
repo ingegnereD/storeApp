@@ -116,11 +116,11 @@ const Login = ({notif, setNotif, access, setAccess, cardClass, setCardClass, siz
                 <section className="page">
                     <article className="input-sec">
                         <label htmlFor="userName">Username</label>
-                        <input type="text" name="userName" id="userName" placeholder='Enter username' onChange={(e)=> handleTextChange(e)} value={credentials.userName} />
+                        <input type="text" name="userName" id="userName" placeholder='Enter username' onChange={(e)=> handleTextChange(e)} value={credentials.userName} autoCorrect ="off" autoFocus/>
                     </article>
                     <article className="input-sec">
                         <label htmlFor="pass">Password</label>
-                        <input type="password" name="pass" id="pass" placeholder='Enter password' onChange={(e)=> handleTextChange(e)} value={credentials.pass} />
+                        <input type="password" name="pass" id="pass" placeholder='Enter password' onChange={(e)=> handleTextChange(e)} value={credentials.pass} autoCorrect ="off" />
                     </article>
                     {downMsg && 
                     <article className="down-msg">

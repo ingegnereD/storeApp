@@ -10,27 +10,38 @@ import { AiFillCaretDown, AiFillCaretUp } from 'react-icons/ai'
 import './pageStyle/product.css'
 import LocationFilter from '../components/locationFilter'
 import { useNavigate } from 'react-router-dom'
+import Notification from '../components/notification'
 
 const RestockProduct = () => {
     const [presentDate, setPresentDate] = useState({date: format(new Date(), 'dd/MM/yyyy'), time: format(new Date(), 'HH:mm')})
+    const [notif, setNotif] = useState({note: '', textclass: '', stat: false})
     const [menu, setMenu] = useState(false)
     const [def, setDef] = useState({deft: 'All Location', state: true})
-    const [clickInput, setClickInput] = useState('')
+    const [holder, setHolder] = useState([])
+    const [tempHolder, setTempHolder] = useState([])
+    const [clickInput, setClickInput] = useState({product: '', quantity: '', unitprice: '', brand: '', unit: ''})
     const [drop, setDrop] = useState(false)
     const navigate = useNavigate()
     
     useEffect(()=>{
-    let userInfo;
-    let account;
-    if (localStorage.getItem('userInfo') === null) {
-        return navigate('/')
-    }
-    else if (localStorage.getItem('userInfo') !== null) {
-        userInfo = JSON.parse(localStorage.getItem('userInfo')).index
-        if (userInfo === -1) {
+        let userInfo;
+        let account;
+        if (localStorage.getItem('userInfo') === null) {
             return navigate('/')
         }
-    }})
+        else if (localStorage.getItem('userInfo') !== null) {
+            userInfo = JSON.parse(localStorage.getItem('userInfo')).index
+            if (userInfo === -1) {
+                return navigate('/')
+            }
+        }
+        // ---------- For the input operation -----------
+        setTempHolder()
+        setHolder(newProduct)
+
+
+    },[clickInput])
+
     function handleSubmit(e) {
         e.preventDefault()
         console.log('restocking new product');
@@ -54,19 +65,22 @@ const RestockProduct = () => {
                     </section>
                     <main>
                         <form style={{overflow: 'visible', position: 'relative'}}>
-                            <section className="top-form">
-                                <TextInput fieldname = {'product'} inputyype={'text'} fieldinfo={'Product Name'} placeholder={'Semoli...'} />
-                                <TextInput fieldname = {'quantity'} inputyype={'number'} fieldinfo={'Quantity'} placeholder={'0000.00'}/>
-                                <TextInput fieldname = {'unitPrice'} inputyype={'number'} fieldinfo={'Unit Price'} placeholder={'0000.00'}/>
+                            <section className="top-form" style={{overflow: 'visible', position: 'relative'}}>
+                                <TextInput fieldname = {'product'} inputyype={'text'} fieldinfo={'Product Name'} placeholder={'Semoli...'} drop={drop} clickInput={clickInput} setClickInput={setClickInput} holder={holder} tempHolder={tempHolder} setTempHolder={setTempHolder} setDrop={setDrop} setNotif={setNotif} />
+                                
+                                <TextInput fieldname = {'quantity'} inputyype={'number'} fieldinfo={'Quantity'} placeholder={'0000.00'} clickInput={clickInput} setClickInput={setClickInput} />
+                                
+                                <TextInput fieldname = {'unitprice'} inputyype={'number'} fieldinfo={'Unit Price'} placeholder={'0000.00'}  clickInput={clickInput} setClickInput={setClickInput}  />
                             </section>
                             <section className="action" style={{overflow: 'visible', position: 'relative'}}>
-                                <ClickTextInput title={'Select Brand'}/>
-                                <ClickInput desc={'Unit'} />
+                                <ClickTextInput title={'Select Brand'} clickInput={clickInput} setClickInput={setClickInput} />
+
+                                <ClickInput desc={'Unit'} clickInput={clickInput} setClickInput={setClickInput} />
                                 <button className="unClear clear event" type='button'>
                                     Clear Field
                                 </button>
                                 <button className="unClear add event" type='submit' onSubmit={handleSubmit}>
-                                    Add Product
+                                    Restock Product
                                 </button>
                             </section>
                         </form>
@@ -105,6 +119,7 @@ const RestockProduct = () => {
                         </section>                    
                     </main>
                 </section>
+                {notif.stat && <Notification notif={notif}/>}
             </header>
         </>
     )
