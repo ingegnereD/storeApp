@@ -5,7 +5,7 @@ import { BsFillFilterSquareFill } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom'
 import { availLocations } from '../dataArray'
 
-const LocationFilter = ({def, userInfo, setUserInfo}) => {
+const LocationFilter = ({def, userInfo, setUserInfo, setClickInput, clickInput}) => {
     const [showBizLoc, setShowBizLoc] = useState(false)
     const [location, setLocation] = useState('')
     const navigate = useNavigate()
@@ -29,6 +29,7 @@ const LocationFilter = ({def, userInfo, setUserInfo}) => {
             }
             else if (typeof(fetchedLocation) !== 'undefined') {
                 setLocation(fetchedLocation)
+                setClickInput({...clickInput, locat: fetchedLocation})
             }
         }
     },[])
@@ -53,6 +54,7 @@ const LocationFilter = ({def, userInfo, setUserInfo}) => {
     function handleChange(ind, data) {
         {!def.state && setUserInfo({...userInfo, location: data.title})}
         setLocation(data.title)
+        setClickInput({...clickInput, locat: data.title})
         if (ind === 3) {
             if (!def.state) {
                 setUserInfo({...userInfo, location: 'Ile-Ife, Osun state'})

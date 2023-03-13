@@ -40,7 +40,8 @@ export const TextInput = ({fieldname, inputtype, fieldinfo, placeholder, drop, s
         }
     }
     function handleClick(ind, data) {
-        
+        setDrop(false)
+        setClickInput({...clickInput, product: data.product, unitprice: data.unitprice, quantity: data.qty, brand: data.brand, unit: data.desc})
     }
     return (
         <section className = {`${fieldname} form-group input-form-gp`} >
@@ -77,7 +78,7 @@ export const NoLabTextInput = ({fieldname, inputtype, placeholder, clickInput, s
         e.preventDefault();
         let name = e.target.name
         let value =  e.target.value
-        setClickInput(value)
+        setClickInput({...clickInput, [fieldname]: value})
     
     }
 
@@ -91,7 +92,7 @@ export const NoLabTextInput = ({fieldname, inputtype, placeholder, clickInput, s
             id = {fieldname}
             placeholder = {placeholder}
             onChange = { handleChange }
-            value={clickInput}
+            value={clickInput[fieldname]}
             /> 
             
             {drop && <article className="drop-option">
@@ -113,6 +114,15 @@ export const NoLabTextInput = ({fieldname, inputtype, placeholder, clickInput, s
 export const ClickInput = ({desc, clickInput, setClickInput})=>{
     const [drop, setDrop] = useState(false)
     const [holder, setHolder] = useState(desc)
+
+    useEffect(()=>{
+        if (!clickInput.unit) {
+            setHolder(desc)
+        }
+        if (clickInput.unit) {
+            setHolder(clickInput.unit)
+        }
+    },[clickInput])
     
     function handleDrop(){
         if(drop){
@@ -142,6 +152,7 @@ export const ClickInput = ({desc, clickInput, setClickInput})=>{
         </article>
     )
 }
+
 export const SellerClickInput = ({desc})=>{
     const [drop, setDrop] = useState(false)
     const [holder, setHolder] = useState([])
@@ -264,11 +275,19 @@ export const CustClickTextInput =({title, icon, hideText})=>{
     )
 }
 
-export const ClickTextInput =({icon, hideText, title})=>{
+export const ClickTextInput =({icon, hideText, title, clickInput, setClickInput})=>{
     const [showList, setShowList] = useState(false)
-    const [clickInput, setClickInput] = useState('')
     const [holder, setHolder] = useState(title)
     const [cass, setCass] = useState(brandName)
+
+    useEffect(()=>{
+        if (!clickInput.brand) {
+            setHolder(title)
+        }
+        if (clickInput.brand) {
+            setHolder(clickInput.brand)
+        }
+    },[clickInput])
 
     function handleShowList(){
         if(showList){
@@ -281,6 +300,7 @@ export const ClickTextInput =({icon, hideText, title})=>{
 
     function handleClick(ind, data) {
         setHolder(data)
+        setClickInput({...clickInput, brand: data})
         if(showList){
             setShowList(false)
         }
@@ -290,20 +310,20 @@ export const ClickTextInput =({icon, hideText, title})=>{
     }
     function handleAdd(e) {
         e.preventDefault()
-        if (clickInput !== " " && clickInput.length > 2) {
-            setHolder(clickInput)
-            setCass([...cass, clickInput])
+        if (clickInput.brand !== " " && clickInput.brand.length > 2) {
+            setHolder(clickInput.brand)
+            setCass([...cass, clickInput.brand])
             
         }
         setClickInput('')
     }
     function handleRemove(e) {
         e.preventDefault()
-        if (!clickInput) {
+        if (!clickInput.brand) {
             setShowList(false)
         }
         else{
-            setClickInput('')
+            setClickInput({...clickInput, brand: ''})
         }
     }
     return(
@@ -322,17 +342,17 @@ export const ClickTextInput =({icon, hideText, title})=>{
                     }).reverse()}
                 </ul>
 
-                <span className='search-area' >
+                {/* <span className='search-area' >
                     <button className="unClear clear warning-bg" type='button' onClick={handleRemove}>
                         {hideText && "Clear"}
                         <span className="icon small-icon"><MdClear /></span>
                     </button> 
-                    <NoLabTextInput fieldinfo={''} fieldname={'newbrand'} inputtype={'text'} placeholder={'Add Brand'} setClickInput={setClickInput} clickInput={clickInput}/> 
+                    <NoLabTextInput fieldinfo={''} fieldname={'newbrand'} inputtype={'text'} placeholder={'Add Brand'} setClickInput={setClickInput} clickInput={clickInput.brand}/> 
                     <button className="unClear primary-bg" type='button' onClick={handleAdd}>
                         {hideText && "Add"}
                         <span className="icon small-icon"><MdAdd /></span>
                     </button>
-                </span>
+                </span> */}
             </article>
             }
         </section>

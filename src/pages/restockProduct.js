@@ -36,17 +36,24 @@ const RestockProduct = () => {
             }
         }
         // ---------- For the input operation -----------
-        setTempHolder()
         setHolder(newProduct)
 
 
     },[clickInput])
 
-    function handleSubmit(e) {
+    function handleRestock(e) {
         e.preventDefault()
-        console.log('restocking new product');
-    }
+        holder.forEach((data, ind) => {
+            if (data.product.toLowerCase().includes(clickInput.product.toLowerCase())) {
+                console.log(ind, data.product);
+                setClickInput({brand: '', product: '', quantity: '', unit: '', unitprice: ''})
+            }
+        });
 
+    }
+    function handleFieldClear() {
+        setClickInput({product: '', quantity: '', unitprice: '', brand: '', unit: ''})
+    }
     return (
         <>
             <Nav menu={menu} setMenu={setMenu}/>
@@ -66,7 +73,7 @@ const RestockProduct = () => {
                     <main>
                         <form style={{overflow: 'visible', position: 'relative'}}>
                             <section className="top-form" style={{overflow: 'visible', position: 'relative'}}>
-                                <TextInput fieldname = {'product'} inputyype={'text'} fieldinfo={'Product Name'} placeholder={'Semoli...'} drop={drop} clickInput={clickInput} setClickInput={setClickInput} holder={holder} tempHolder={tempHolder} setTempHolder={setTempHolder} setDrop={setDrop} setNotif={setNotif} />
+                                <TextInput fieldname = {'product'} inputyype={'text'} fieldinfo={'Product Name'} placeholder={'Semoli...'} drop={drop} clickInput={clickInput} setClickInput={setClickInput} holder={holder} tempHolder={tempHolder} setDrop={setDrop} setNotif={setNotif} />
                                 
                                 <TextInput fieldname = {'quantity'} inputyype={'number'} fieldinfo={'Quantity'} placeholder={'0000.00'} clickInput={clickInput} setClickInput={setClickInput} />
                                 
@@ -76,10 +83,10 @@ const RestockProduct = () => {
                                 <ClickTextInput title={'Select Brand'} clickInput={clickInput} setClickInput={setClickInput} />
 
                                 <ClickInput desc={'Unit'} clickInput={clickInput} setClickInput={setClickInput} />
-                                <button className="unClear clear event" type='button'>
+                                <button className="unClear clear event" type='button' onClick={handleFieldClear}>
                                     Clear Field
                                 </button>
-                                <button className="unClear add event" type='submit' onSubmit={handleSubmit}>
+                                <button className="unClear add event" type='button' onClick={handleRestock}>
                                     Restock Product
                                 </button>
                             </section>

@@ -39,6 +39,7 @@ const DateFilter = ({notif, setNotif}) => {
         if (id === 'yesterday') {
             setStoreDate('Yesterday')
             setUseDate(Number(dayvalue.day) - 1)
+
         }
         if (id === 'seven-days') {
             setStoreDate('Last 7 days')

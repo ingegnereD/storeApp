@@ -158,14 +158,14 @@ export const newProduct = [
     {date: '3/9/2023', time: '3:25',  product: 'Semovita 5kg', unitprice: '6,700', qty: '600', desc: 'bag', brand: 'Golden Penny', totamount: '10,230,750', addedby: 'David'},
     {date: '3/9/2023', time: '3:25',  product: 'Semovita 10kg', unitprice: '6,700', qty: '600', desc: 'bag', brand: 'Golden Penny', totamount: '10,230,750', addedby: 'David'},
     {date: '3/9/2023', time: '3:25',  product: 'Salt 50kg', unitprice: '6,700', qty: '600', desc: 'bag', brand: 'Golden Penny', totamount: '10,230,750', addedby: 'David'},
-    {date: '3/9/2023', time: '3:25',  product: 'Mr Chef (By 80)', unitprice: '6,700', qty: '600', desc: 'bag', brand: 'Golden Penny', totamount: '10,230,750', addedby: 'David'},
-    {date: '3/9/2023', time: '3:25',  product: 'Mr Chef (By 40)', unitprice: '6,700', qty: '600', desc: 'bag', brand: 'Golden Penny', totamount: '10,230,750', addedby: 'David'},
-    {date: '3/9/2023', time: '3:25',  product: 'Mr Chef (By 40)', unitprice: '6,700', qty: '600', desc: 'bag', brand: 'Golden Penny', totamount: '10,230,750', addedby: 'David'},
-    {date: '3/9/2023', time: '3:25',  product: 'Noodles', unitprice: '6,700', qty: '600', desc: 'bag', brand: 'Golden Penny', totamount: '10,230,750', addedby: 'David'},
-    {date: '3/9/2023', time: '3:25',  product: 'Jollof', unitprice: '6,700', qty: '600', desc: 'bag', brand: 'Golden Penny', totamount: '10,230,750', addedby: 'David'},
-    {date: '3/9/2023', time: '3:25',  product: 'Goat Meat', unitprice: '6,700', qty: '600', desc: 'bag', brand: 'Golden Penny', totamount: '10,230,750', addedby: 'David'},
-    {date: '3/9/2023', time: '3:25',  product: 'Semolina 1kg', unitprice: '6,700', qty: '600', desc: 'bag', brand: 'Golden Penny', totamount: '10,230,750', addedby: 'David'},
-    {date: '3/9/2023', time: '3:25',  product: 'Semolina 2kg', unitprice: '6,700', qty: '600', desc: 'bag', brand: 'Golden Penny', totamount: '10,230,750', addedby: 'David'},
+    {date: '3/9/2023', time: '3:25',  product: 'Mr Chef (By 80)', unitprice: '6,700', qty: '600', desc: 'bag', brand: 'Mr Chef', totamount: '10,230,750', addedby: 'David'},
+    {date: '3/9/2023', time: '3:25',  product: 'Mr Chef (By 40)', unitprice: '6,700', qty: '600', desc: 'bag', brand: 'Mr Chef', totamount: '10,230,750', addedby: 'David'},
+    {date: '3/9/2023', time: '3:25',  product: 'Mr Chef (By 40)', unitprice: '6,700', qty: '600', desc: 'bag', brand: 'Mr Chef', totamount: '10,230,750', addedby: 'David'},
+    {date: '3/9/2023', time: '3:25',  product: 'Noodles', unitprice: '6,700', qty: '600', desc: 'ctn', brand: 'Golden Penny', totamount: '10,230,750', addedby: 'David'},
+    {date: '3/9/2023', time: '3:25',  product: 'Jollof', unitprice: '6,700', qty: '600', desc: 'ctn', brand: 'Golden Penny', totamount: '10,230,750', addedby: 'David'},
+    {date: '3/9/2023', time: '3:25',  product: 'Goat Meat', unitprice: '6,700', qty: '600', desc: 'ctn', brand: 'Golden Penny', totamount: '10,230,750', addedby: 'David'},
+    {date: '3/9/2023', time: '3:25',  product: 'Emperor 25lit', unitprice: '31,000', qty: '600', desc: 'keg', brand: 'Multipro', totamount: '10,230,750', addedby: 'David'},
+    {date: '3/9/2023', time: '3:25',  product: 'Emperor 5 lit', unitprice: '32,500', qty: '100', desc: 'ctn', brand: 'Multipro', totamount: '10,230,750', addedby: 'David'},
     {date: '3/9/2023', time: '3:25',  product: 'Semovita 1kg', unitprice: '6,700', qty: '600', desc: 'bag', brand: 'Golden Penny', totamount: '10,230,750', addedby: 'David'},
     {date: '3/9/2023', time: '3:25',  product: 'Semovita 1kg', unitprice: '6,700', qty: '600', desc: 'bag', brand: 'Golden Penny', totamount: '10,230,750', addedby: 'David'},
     {date: '3/9/2023', time: '3:25',  product: 'Semovita 1kg', unitprice: '6,700', qty: '600', desc: 'bag', brand: 'Golden Penny', totamount: '10,230,750', addedby: 'David'},
@@ -181,7 +181,7 @@ export const newProduct = [
 export const brandName = ['Golden Penny', 'Honey Well', 'Multipro', 'Baking Mat.', 'Salt']
 export const custList = ['Adegoke', 'Emmanuel', 'David', 'Adetunji', 'Gboye bakery', 'Samuel','Joseph']
 export const sellers = ['David', 'Onyedika','Christopher', 'Glory']
-export const unit = ['bag(s)', 'keg(s)', 'ctn(s)', 'pcs']
+export const unit = ['bag(s)', 'keg(s)', 'ctn(s)', 'pcs','satchet(s)']
 
 export const tempSaleList = [
     {product: 'Semovita 500 g', unitprice: '6,250', qty: '15 bags', totamount: '82,200'},

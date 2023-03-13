@@ -13,7 +13,7 @@ const ListProduct = () => {
     const [size, setSize] = useState(window.innerWidth)
     const [filterObj, setFilterObj] = useState(false)
     const [def, setDef] = useState({deft: 'All Location', state: true})
-    const [clickInput, setClickInput] = useState('')
+    const [clickInput, setClickInput] = useState({brand: '', filterProdutct: '', locat: 'All Location', date: {}, })
     const [drop, setDrop] = useState(false)
     const navigate = useNavigate()
     
@@ -66,12 +66,12 @@ const ListProduct = () => {
                         </span>
                     </div>
                     {filterObj && <div className="first" style={{overflow: 'visible', position: 'relative'}}>
-                        <LocationFilter def={def} setDef={setDef}/>
-                        <DateFilter />
-                        <CustClickTextInput title={'Customer'} />
-                        <SellerClickInput desc={'Seller'} />
+                        <LocationFilter def={def} setDef={setDef} clickInput={clickInput} setClickInput={setClickInput} />
+                        <DateFilter clickInput={clickInput} setClickInput={setClickInput}/>
+                        {/* <CustClickTextInput title={'Customer'} clickInput={clickInput} setClickInput={setClickInput}/> */}
+                        {/* <SellerClickInput desc={'Seller'} clickInput={clickInput} setClickInput={setClickInput}/> */}
                         <NoLabTextInput inputtype={'text'} fieldname={'filterProdutct'} placeholder={'Find product by name or brand'} fieldinfo={'product-input-filter'} clickInput={clickInput} setClickInput={setClickInput} drop={drop} setDrop={setDrop} />
-                        <ClickTextInput title={'Brand'} />
+                        <ClickTextInput title={'Brand'} clickInput={clickInput} setClickInput={setClickInput}/>
                     </div>}
                 </article>
                 <article className="products">
