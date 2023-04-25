@@ -157,6 +157,10 @@ export const newProduct = [
     {date: '3/9/2023', time: '3:25',  product: 'Semovita 2kg', unitprice: '6,700', qty: '600', desc: 'bag', brand: 'Golden Penny', totamount: '10,230,750', addedby: 'David'},
     {date: '3/9/2023', time: '3:25',  product: 'Semovita 5kg', unitprice: '6,700', qty: '600', desc: 'bag', brand: 'Golden Penny', totamount: '10,230,750', addedby: 'David'},
     {date: '3/9/2023', time: '3:25',  product: 'Semovita 10kg', unitprice: '6,700', qty: '600', desc: 'bag', brand: 'Golden Penny', totamount: '10,230,750', addedby: 'David'},
+    {date: '3/9/2023', time: '3:25',  product: 'H/W Semolina 900g', unitprice: '6,000', qty: '200', desc: 'bag', brand: 'Golden Penny', totamount: '10,230,750', addedby: 'David'},
+    {date: '3/9/2023', time: '3:25',  product: 'H/W Semolina 1.8kg', unitprice: '6,000', qty: '200', desc: 'bag', brand: 'Golden Penny', totamount: '10,230,750', addedby: 'David'},
+    {date: '3/9/2023', time: '3:25',  product: 'H/W Semolina 4.kg', unitprice: '6,000', qty: '200', desc: 'bag', brand: 'Golden Penny', totamount: '10,230,750', addedby: 'David'},
+    {date: '3/9/2023', time: '3:25',  product: 'H/W Semolina 9kg', unitprice: '6,000', qty: '200', desc: 'bag', brand: 'Golden Penny', totamount: '10,230,750', addedby: 'David'},
     {date: '3/9/2023', time: '3:25',  product: 'Salt 50kg', unitprice: '6,700', qty: '600', desc: 'bag', brand: 'Golden Penny', totamount: '10,230,750', addedby: 'David'},
     {date: '3/9/2023', time: '3:25',  product: 'Mr Chef (By 80)', unitprice: '6,700', qty: '600', desc: 'bag', brand: 'Mr Chef', totamount: '10,230,750', addedby: 'David'},
     {date: '3/9/2023', time: '3:25',  product: 'Mr Chef (By 40)', unitprice: '6,700', qty: '600', desc: 'bag', brand: 'Mr Chef', totamount: '10,230,750', addedby: 'David'},
@@ -166,15 +170,8 @@ export const newProduct = [
     {date: '3/9/2023', time: '3:25',  product: 'Goat Meat', unitprice: '6,700', qty: '600', desc: 'ctn', brand: 'Golden Penny', totamount: '10,230,750', addedby: 'David'},
     {date: '3/9/2023', time: '3:25',  product: 'Emperor 25lit', unitprice: '31,000', qty: '600', desc: 'keg', brand: 'Multipro', totamount: '10,230,750', addedby: 'David'},
     {date: '3/9/2023', time: '3:25',  product: 'Emperor 5 lit', unitprice: '32,500', qty: '100', desc: 'ctn', brand: 'Multipro', totamount: '10,230,750', addedby: 'David'},
-    {date: '3/9/2023', time: '3:25',  product: 'Semovita 1kg', unitprice: '6,700', qty: '600', desc: 'bag', brand: 'Golden Penny', totamount: '10,230,750', addedby: 'David'},
-    {date: '3/9/2023', time: '3:25',  product: 'Semovita 1kg', unitprice: '6,700', qty: '600', desc: 'bag', brand: 'Golden Penny', totamount: '10,230,750', addedby: 'David'},
-    {date: '3/9/2023', time: '3:25',  product: 'Semovita 1kg', unitprice: '6,700', qty: '600', desc: 'bag', brand: 'Golden Penny', totamount: '10,230,750', addedby: 'David'},
-    {date: '3/9/2023', time: '3:25',  product: 'Semovita 1kg', unitprice: '6,700', qty: '600', desc: 'bag', brand: 'Golden Penny', totamount: '10,230,750', addedby: 'David'},
-    {date: '3/9/2023', time: '3:25',  product: 'Semovita 1kg', unitprice: '6,700', qty: '600', desc: 'bag', brand: 'Golden Penny', totamount: '10,230,750', addedby: 'David'},
-    {date: '3/9/2023', time: '3:25',  product: 'Semovita 1kg', unitprice: '6,700', qty: '600', desc: 'bag', brand: 'Golden Penny', totamount: '10,230,750', addedby: 'David'},
-    {date: '3/9/2023', time: '3:25',  product: 'Semovita 1kg', unitprice: '6,700', qty: '600', desc: 'bag', brand: 'Golden Penny', totamount: '10,230,750', addedby: 'David'},
-    {date: '3/9/2023', time: '3:25',  product: 'Semovita 1kg', unitprice: '6,700', qty: '600', desc: 'bag', brand: 'Golden Penny', totamount: '10,230,750', addedby: 'David'},
-    {date: '3/9/2023', time: '3:25',  product: 'G/P Wheat 5kg', unitprice: '6,700', qty: '600', desc: 'bag', brand: 'Golden Penny', totamount: '10,230,750', addedby: 'David'},
+    {date: '3/9/2023', time: '3:25',  product: 'Emperor 2.5 lit', unitprice: '17,500', qty: '500', desc: 'ctn', brand: 'Multipro', totamount: '10,230,750', addedby: 'David'},
+    
 ]
 
 

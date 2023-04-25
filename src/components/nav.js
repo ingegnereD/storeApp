@@ -12,7 +12,7 @@ import {BsMenuButtonWideFill} from 'react-icons/bs'
 import LocationFilter from './locationFilter'
 import { useNavigate } from 'react-router-dom'
 
-const Nav = ({menu, setMenu}) => {
+const Nav = ({menu, setMenu, clickInput, setClickInput}) => {
     const [navBtn, setNavBtn] = useState({calc: false, pos: false, profit: false, home: false, list: false})
     const [theme, setTheme] = useState(true)   
     const [fetched, setFetched]= useState({seller: '', location: ''})
@@ -94,7 +94,7 @@ const Nav = ({menu, setMenu}) => {
             </article>
             <article className="header-nav">
                 <article className="left">
-                    <LocationFilter def={def} setDef={setDef} />
+                    <LocationFilter def={def} setDef={setDef} clickInput={clickInput} setClickInput={setClickInput} />
                 </article>
                 <article className="right">
                     <button className="btn unClear home" onMouseEnter={(e)=>handleNavBtnEnter(e)} onMouseLeave={(e)=>handleNavBtnLeave(e)} onClick={()=> {return navigate('/dashboard')}}>

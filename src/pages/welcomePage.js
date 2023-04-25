@@ -4,6 +4,7 @@ import Notification from '../components/notification'
 import SignUp from '../components/signUp'
 import "./pageStyle/welcome.css"
 import Picture from '../components/img/pic1.jpg'
+import { useNavigate } from 'react-router-dom'
 
 const Welcome = () => {
     const [notif, setNotif] = useState({note: '', textclass: '', stat: false})
@@ -11,8 +12,20 @@ const Welcome = () => {
     const [hideBtn, setHideBtn] = useState(false)
     const [cardClass, setCardClass] = useState(true)
     const [logo, setLogo] = useState(false)
+    const navigate = useNavigate()
 
     useEffect(()=>{
+        let userInfo;
+        if (localStorage.getItem('useInfo') === null) {
+            return navigate('/signup')
+        }
+        if (localStorage.getItem('userInfo') !== null) {
+            userInfo = JSON.parse(localStorage.getItem('userInfo'))
+            let ind = userInfo.index
+            if (ind === -1) {
+                return navigate('/signup')
+            }
+        }
 
         window.addEventListener('resize',()=>{
             setSize(window.innerWidth)

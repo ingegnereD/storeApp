@@ -6,9 +6,10 @@ import DateFilter from '../components/dateFilter'
 import { ClickInput, ClickTextInput, CustClickTextInput, NoLabTextInput, SellerClickInput } from '../components/inputComponent'
 import LocationFilter from '../components/locationFilter'
 import Nav from '../components/nav'
-import { newProduct } from '../dataArray'
+import { newProduct, brandName } from '../dataArray'
 
 const ListProduct = () => {
+    const [fetchedList, setFetchedList] = useState(brandName)
     const [menu, setMenu] = useState(false)
     const [size, setSize] = useState(window.innerWidth)
     const [filterObj, setFilterObj] = useState(false)
@@ -54,7 +55,7 @@ const ListProduct = () => {
     }
     return (
     <>
-        <Nav menu={menu} setMenu={setMenu}/>
+        <Nav menu={menu} setMenu={setMenu} clickInput={clickInput} setClickInput={setClickInput} />
         <header>
             <Aside menu={menu} setMenu={setMenu} />
             <section className="product-page">
@@ -70,8 +71,9 @@ const ListProduct = () => {
                         <DateFilter clickInput={clickInput} setClickInput={setClickInput}/>
                         {/* <CustClickTextInput title={'Customer'} clickInput={clickInput} setClickInput={setClickInput}/> */}
                         {/* <SellerClickInput desc={'Seller'} clickInput={clickInput} setClickInput={setClickInput}/> */}
+                        <ClickInput desc={'Brand'} clickInput={clickInput} setClickInput={setClickInput} fetchedList={fetchedList} />
                         <NoLabTextInput inputtype={'text'} fieldname={'filterProdutct'} placeholder={'Find product by name or brand'} fieldinfo={'product-input-filter'} clickInput={clickInput} setClickInput={setClickInput} drop={drop} setDrop={setDrop} />
-                        <ClickTextInput title={'Brand'} clickInput={clickInput} setClickInput={setClickInput}/>
+                        
                     </div>}
                 </article>
                 <article className="products">

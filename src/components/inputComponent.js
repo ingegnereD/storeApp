@@ -4,44 +4,19 @@ import { GrAdd } from 'react-icons/gr';
 import { MdAdd, MdClear, MdOutlinePeopleAlt } from 'react-icons/md';
 import { brandName, custList, newProduct, purchaseInfo, sellers, stockAlert, unit } from '../dataArray';
 
-export const TextInput = ({fieldname, inputtype, fieldinfo, placeholder, drop, setDrop, clickInput, setClickInput, holder,  setNotif}) => {
-    const [tempList, setTempList]= useState([])
+export const TextInput = ({fieldname, inputtype, fieldinfo, placeholder, drop, setDrop, clickInput, setClickInput, holder,tempHolder,  setNotif}) => {
 
     function handleChange(e){
         e.preventDefault();
         let name = e.target.name
         let value =  e.target.value
         setClickInput({...clickInput, [name]: value})
-        switch (name) {
-            case 'product':
-                if (value === '' || value === ' ') {
-                    setDrop(false)
-                    
-                }else{
-                    const filtered = holder.filter((data)=> data.product.toLowerCase().includes(value.toLowerCase()) )
-                    setTempList(filtered)
-                    setDrop(true)
-                    if (filtered.length === 0) {
-                        setDrop(false)
-                        setNotif({note: 'Check Entered Product and Try again !!!', textclass: 'danger-color', stat: true})
-                        setTimeout(()=>{
-                            setClickInput({product: '', quantity: '', unitprice: '', brand: '', unit: ''})
-                            setNotif({note:'', textclass: '', stat:false})
-                        },3000)
-    
-                    }
-                }
-            
-            
-                break;
+        // console.log(clickInput);
         
-            default:
-                break;
-        }
     }
     function handleClick(ind, data) {
-        setDrop(false)
         setClickInput({...clickInput, product: data.product, unitprice: data.unitprice, quantity: data.qty, brand: data.brand, unit: data.desc})
+        console.log(clickInput.unitprice);
     }
     return (
         <section className = {`${fieldname} form-group input-form-gp`} >
@@ -58,7 +33,7 @@ export const TextInput = ({fieldname, inputtype, fieldinfo, placeholder, drop, s
             
             {drop && <article className="drop-option">
                 <ul className="fetched-list">
-                    {tempList.map((data, ind)=>{
+                    {tempHolder.map((data, ind)=>{
                         return(
                             <li key={ind} onClick={()=>handleClick(ind, data)}><h4>{data.product}</h4></li>
                         )
@@ -111,7 +86,7 @@ export const NoLabTextInput = ({fieldname, inputtype, placeholder, clickInput, s
     )
 }
 
-export const ClickInput = ({desc, clickInput, setClickInput})=>{
+export const ClickInput = ({desc, clickInput, setClickInput, fetchedList})=>{
     const [drop, setDrop] = useState(false)
     const [holder, setHolder] = useState(desc)
 
@@ -144,7 +119,7 @@ export const ClickInput = ({desc, clickInput, setClickInput})=>{
         <article className="form-group click-input-gp" onBlur={hideDrop} style={{height: '2.5rem'}}>
             <button className="unClear" type='button' onClick={handleDrop} >{holder}
                 {drop && <ul className="option">
-                        {unit.map((data, ind)=>{
+                        {fetchedList.map((data, ind)=>{
                             return(<li key={ind} onClick={()=>handleClick(ind, data)}><h4>{data}</h4></li>)
                         })}
                 </ul>}
@@ -342,7 +317,7 @@ export const ClickTextInput =({icon, hideText, title, clickInput, setClickInput}
                     }).reverse()}
                 </ul>
 
-                {/* <span className='search-area' >
+                <span className='search-area' >
                     <button className="unClear clear warning-bg" type='button' onClick={handleRemove}>
                         {hideText && "Clear"}
                         <span className="icon small-icon"><MdClear /></span>
@@ -352,7 +327,7 @@ export const ClickTextInput =({icon, hideText, title, clickInput, setClickInput}
                         {hideText && "Add"}
                         <span className="icon small-icon"><MdAdd /></span>
                     </button>
-                </span> */}
+                </span>
             </article>
             }
         </section>

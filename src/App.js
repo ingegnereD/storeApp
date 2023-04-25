@@ -13,10 +13,8 @@ import ListReturn from './pages/listReturnSale'
 import RecoverAct from './pages/recoverAct'
 
 const App = () => {
-  const [access, setAccess] = useState(false)
-
+  const [access, setAccess] = useState(true)
   
-
   return (
     <section className="container">
       <BrowserRouter>
@@ -32,7 +30,7 @@ const App = () => {
           <Route path='allsales' element ={<AllSales access={access} setAccess={setAccess}/>}/>
           <Route path='returnsales' element ={<ListReturn access={access} setAccess={setAccess}/>}/>
           <Route path='passwordrecovery' element={<RecoverAct />} />
-          <Route path='*' element ={<LoginPage setAccess={setAccess}/>}/>
+          <Route path='*' element ={<WelcomePage />}/>
         </Routes>
       </BrowserRouter>
     </section>

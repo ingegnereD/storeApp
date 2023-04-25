@@ -116,7 +116,7 @@ const Login = ({notif, setNotif, access, setAccess, cardClass, setCardClass, siz
                 <section className="page">
                     <article className="input-sec">
                         <label htmlFor="userName">Username</label>
-                        <input type="text" name="userName" id="userName" placeholder='Enter username' onChange={(e)=> handleTextChange(e)} value={credentials.userName} autoCorrect ="off" autoFocus/>
+                        <input type="text" name="userName" id="userName" placeholder='Enter username' onChange={(e)=> handleTextChange(e)} value={credentials.userName} autoCorrect ="off" autoFocus autoComplete='off' />
                     </article>
                     <article className="input-sec">
                         <label htmlFor="pass">Password</label>

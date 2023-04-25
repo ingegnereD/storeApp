@@ -280,6 +280,7 @@
                                     height: 2.3rem;
                                     button {
                                         width: 7rem;
+                                        height: 1.8rem;
                                         background-color: $light-blue-color;
                                         color: $white-color1;
                                     }
@@ -289,6 +290,22 @@
                     }
                 }
             }
+        }
+    }
+}
+
+#cars {
+    @include area(auto, 100%);
+    // @include flex(row, center, center);
+    min-height: 2.3rem;
+    .option {
+        &:first-child {
+            margin-top: .5rem;
+        }
+        @include area(2.2rem, 100%);
+        @include flex(row, center, center);
+        &:hover {
+            background-color: green;
         }
     }
 }

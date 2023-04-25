@@ -35,9 +35,33 @@ const RestockProduct = () => {
                 return navigate('/')
             }
         }
+
         // ---------- For the input operation -----------
         setHolder(newProduct)
-
+        let name = 'product';
+        switch (name) {
+            case 'product':
+                if (clickInput.product === '' || clickInput.product === ' ') {
+                    setDrop(false)
+                    
+                }else{
+                    const filtered = holder.filter((data)=> data.product.toLowerCase().includes(clickInput.product.toLowerCase()) )
+                    setTempHolder(filtered)
+                    setDrop(true)
+                    if (filtered.length === 0) {
+                        setDrop(false)
+                        setNotif({note: 'Check Entered Product and Try again !!!', textclass: 'danger-color', stat: true})
+                        setTimeout(()=>{
+                            setClickInput({product: '', quantity: '', unitprice: '', brand: '', unit: ''})
+                            setNotif({note:'', textclass: '', stat:false})
+                        },3000)
+    
+                    }
+                }
+                break;
+            default:
+                break;
+        }
 
     },[clickInput])
 
@@ -56,7 +80,7 @@ const RestockProduct = () => {
     }
     return (
         <>
-            <Nav menu={menu} setMenu={setMenu}/>
+            <Nav menu={menu} setMenu={setMenu} clickInput={clickInput} setClickInput={setClickInput} />
             <header>
                 <Aside menu={menu} setMenu={setMenu}/>
                 <section className="product-page">
@@ -66,7 +90,7 @@ const RestockProduct = () => {
                         </article>
                         <article className="right" style={{overflow: 'visible', position: 'relative'}}>
                             {/* this only cones up when that on nav disappears.... */}
-                            <LocationFilter def={def} setDef={setDef}/> 
+                            <LocationFilter def={def} setDef={setDef} clickInput={clickInput} setClickInput={setClickInput}/> 
                             
                         </article>
                     </section>
@@ -80,9 +104,9 @@ const RestockProduct = () => {
                                 <TextInput fieldname = {'unitprice'} inputyype={'number'} fieldinfo={'Unit Price'} placeholder={'0000.00'}  clickInput={clickInput} setClickInput={setClickInput}  />
                             </section>
                             <section className="action" style={{overflow: 'visible', position: 'relative'}}>
-                                <ClickTextInput title={'Select Brand'} clickInput={clickInput} setClickInput={setClickInput} />
+                                {/* <ClickTextInput title={'Select Brand'} clickInput={clickInput} setClickInput={setClickInput} /> */}
 
-                                <ClickInput desc={'Unit'} clickInput={clickInput} setClickInput={setClickInput} />
+                                {/* <ClickInput desc={'Unit'} clickInput={clickInput} setClickInput={setClickInput} /> */}
                                 <button className="unClear clear event" type='button' onClick={handleFieldClear}>
                                     Clear Field
                                 </button>

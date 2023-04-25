@@ -11,18 +11,17 @@ const LocationFilter = ({def, userInfo, setUserInfo, setClickInput, clickInput})
     const navigate = useNavigate()
 
     useEffect(()=>{
-        let userInfo;
+
         let account;
+        // setLocation(userInfo.location)
+        let userInfos;
         if (localStorage.getItem('userInfo') === null || localStorage.getItem('account') === null) {
             return navigate('/')   
         }
         if (localStorage.getItem('userInfo') !== null && localStorage.getItem('account') !== null) {
-            userInfo = JSON.parse(localStorage.getItem('userInfo'))
+            userInfos = JSON.parse(localStorage.getItem('userInfo'))
             account = JSON.parse(localStorage.getItem('account'))
-            let ind = userInfo.index
-            if (ind === -1) {
-                return navigate('/')
-            }
+            let ind = userInfos.index
             let fetchedLocation = account.at(ind).profile.location
             if (typeof(fetchedLocation) === 'undefined') {
                 setLocation('Select Location')

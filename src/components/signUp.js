@@ -6,7 +6,8 @@ import LocationFilter from './locationFilter'
 
 const SignUp = ({notif, setNotif, cardClass, setCardClass, size}) => {
     const [signUpBtn, setSignUpBtn]= useState(true)
-    const [userInfo, setUserInfo] = useState({firstName: '', lastName: '', email: '', phone: '', location: 'Ile-Ife, Osun state' , userName: '',  pass: ''})
+    const [clickInput, setClickInput] = useState('')
+    const [userInfo, setUserInfo] = useState({firstName: '', lastName: '', email: '', phone: '', location: 'Select Location' , userName: '',  pass: ''})
     const [passCheck, setPassCheck] = useState({pass: '', pass2: ''})
     const [accessNote, setAccessNote] = useState(false)
     const [def, setDef] = useState({deft: 'Ile-Ife, Osun state', state: false})
@@ -14,6 +15,7 @@ const SignUp = ({notif, setNotif, cardClass, setCardClass, size}) => {
 
 
     useEffect(()=>{
+
         if (size <= 921) {
             setCardClass(true)
         }
@@ -161,7 +163,7 @@ const SignUp = ({notif, setNotif, cardClass, setCardClass, size}) => {
             <section className="first-p page">
                 <article className="input-sec">
                     <label htmlFor="firstName">First Name</label>
-                    <input type="text" name="firstName" id="firstName" placeholder='First Name' onChange={(e)=> handleTextChange(e)} value={userInfo.firstName} />
+                    <input type="text" name="firstName" id="firstName" placeholder='First Name' onChange={(e)=> handleTextChange(e)} value={userInfo.firstName} autoFocus autoComplete='on' autoCorrect='on' />
                 </article>
                 <article className="input-sec">
                     <label htmlFor="lastName">LastName</label>
@@ -175,7 +177,7 @@ const SignUp = ({notif, setNotif, cardClass, setCardClass, size}) => {
                     <label htmlFor="phone">Phone</label>
                     <input type="number" name="phone" id="phone" placeholder='Phone' onChange={(e)=> handleTextChange(e)} value={userInfo.phone} />
                 </article>
-                <LocationFilter def={def} setDef={setDef} last={false} userInfo={userInfo} setUserInfo={setUserInfo} />
+                <LocationFilter def={def} setDef={setDef} last={false} userInfo={userInfo} setUserInfo={setUserInfo} clickInput={clickInput} setClickInput={setClickInput} />
 
             </section>
             :

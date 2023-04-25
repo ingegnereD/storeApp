@@ -7,7 +7,7 @@ import { FaCreditCard } from 'react-icons/fa'
 import { MdAdd, MdOutlinePeopleAlt } from 'react-icons/md'
 import { TbBoxMultiple, TbCurrencyNaira } from 'react-icons/tb'
 import { useNavigate } from 'react-router-dom'
-import { ClickTextInput, NoLabTextInput, TextInput } from '../components/inputComponent'
+import { ClickTextInput, CustClickTextInput, NoLabTextInput, TextInput } from '../components/inputComponent'
 import Nav from '../components/nav'
 import { avilableProduct, tempSaleList } from '../dataArray'
 import './pageStyle/sale.css'
@@ -18,6 +18,7 @@ const NewSale = () => {
     const [title, setTitle] = useState('Walk-In Customer')
     const [size, setSize] = useState(window.innerWidth)
     const [hideText, setHideText] = useState(false)
+    const [clickInput, setClickInput] = useState({product: ''})
     const navigate = useNavigate()
 
     useEffect(()=>{
@@ -50,8 +51,8 @@ const NewSale = () => {
                 <main>
                     <section className="left">
                         <article className="top" style={{overflow: 'visible', position: 'relative'}}>
-                            <ClickTextInput title={title} icon={icon} hideText={hideText}/>
-                            <NoLabTextInput fieldname={'sale-input'} inputtype={'text'} placeholder={'Enter product name sell....'}/>
+                            <CustClickTextInput title={title} icon={icon} hideText={hideText}/>
+                            <NoLabTextInput fieldname={'product'} inputtype={'text'} placeholder={'Enter product name sell....'} clickInput={clickInput} setClickInput={setClickInput} />
                         </article>
                         <article className="sale-list">
                             <div className="dash-bottom-info">
@@ -75,7 +76,7 @@ const NewSale = () => {
                                                             <td>{ind + 1}</td>
                                                             <td>{data.product}</td>
                                                             <td>{data.unitprice}</td>
-                                                            <td><Quantity /></td>
+                                                            <td><Quantity clickInput={clickInput} setClickInput={setClickInput}/></td>
                                                             <td>{data.totamount}</td>
                                                             <td><RemoveList /> <span className="icon mid-icon"><AiOutlineCloseCircle /></span></td>
                                                         </tr>
@@ -130,11 +131,11 @@ const RemoveList = ()=>{
     )
 }
 
-const Quantity = ()=>{
+const Quantity = ({clickInput, setClickInput})=>{
     return(
         <article className="qty-add-sub">
             <button className="unClear sub-qty"><span className="icon small-icon"><BiMinus /></span></button>
-            <NoLabTextInput fieldname={'qty-input'} inputtype={'text'} placeholder={'1'} />
+            <NoLabTextInput fieldname={'qty-input'} inputtype={'text'} placeholder={'1'} clickInput={clickInput} setClickInput={setClickInput}/>
             <button className="unClear add-qty"><span className="icon small-icon"><MdAdd /></span></button>
         </article>
     )
